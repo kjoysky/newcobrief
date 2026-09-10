@@ -33,6 +33,21 @@ def call(method: str, path: str, payload: dict | None = None, live: bool = False
         sys.exit(f"Buttondown {method} {path} failed: {e.code} {e.read().decode()[:500]}")
 
 
+def tag_ids() -> dict:
+    """Buttondown filters want tag IDs, not names. Returns {name: id}, creating any missing city tag
+    (named by city slug, the same value the website form posts) so the audience exists before anyone signs up."""
+    from config import LAUNCH_CITIES
+    from build_site import slug
+    have = {t["name"]: t["id"] for t in call("GET", "/tags?page_size=100").get("results", [])}
+    for city in LAUNCH_CITIES:
+        name = slug(city)
+        if name not in have:
+            have[name] = call("POST", "/tags", {"name": name, "color": "#17754C",
+                                                "description": f"Gets the Monday brief for {city}"})["id"]
+            print(f"created tag {name}")
+    return have
+
+
 def main() -> None:
     load_env()
     if not os.environ.get("BUTTONDOWN_API_KEY"):
@@ -41,13 +56,17 @@ def main() -> None:
     only = sys.argv[sys.argv.index("--city") + 1] if "--city" in sys.argv else None
     manifest = build_all(only) if "--no-build" not in sys.argv else json.loads((EMAIL_DIR / "manifest.json").read_text())
 
+    ids = tag_ids()
     results = {}
     for city, m in manifest.items():
         if only and city.lower() != only.lower():
             continue
-        # email_type "private": not added to Buttondown's public archive; the city page on the site is the archive.
-        email = call("POST", "/emails", {"subject": m["subject"], "body": m["body"], "status": "draft",
-                                        "email_type": "private", "included_tags": [m["tag"]]})
+        # Audience = subscribers whose tags contain this city (Buttondown API 2026-04-01 "filters" shape).
+        # archival_mode "disabled": not put in Buttondown's public archive; the city page on the site is the archive.
+        email = call("POST", "/emails", {
+            "subject": m["subject"], "body": m["body"], "status": "draft", "archival_mode": "disabled",
+            "filters": {"predicate": "and", "groups": [],
+                        "filters": [{"field": "subscriber.tags", "operator": "contains", "value": ids[m["tag"]]}]}})
         eid = email["id"]
         if send:
             call("PATCH", f"/emails/{eid}", {"status": "about_to_send"}, live=True)
