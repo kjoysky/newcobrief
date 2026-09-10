@@ -23,7 +23,7 @@ HOME_DESCRIPTION = ("A weekly brief of newly formed Colorado businesses: the sta
                     "operating companies, tagged by trade, with one line for a commercial insurance broker on each. "
                     "One city is free.")
 AUTHOR = "Kristina Nelson"
-CONTACT_EMAIL = "kjoysky31@gmail.com"      # swap for hello@newcobrief.com once GoDaddy forwarding is set up
+CONTACT_EMAIL = "brief@newcobrief.com"     # forwards to kjoysky31@gmail.com via ImprovMX (MX + SPF at GoDaddy, 2026-09-10)
 PRICE_LINE = "Paid plans from $49/mo add the whole state and the whole office."
 THIN_WEEK = 20
 # Public city pages show ONE trade in full (the lead trade, up to this many entries) and every other trade
