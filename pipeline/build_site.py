@@ -120,6 +120,11 @@ def display_name(name: str) -> str:
     return " ".join(words)
 
 
+# Buttondown embedded form. The city <select> is named "tag" so each subscriber
+# is tagged with a city slug (needs the Basic plan; tags are ignored on Free).
+SIGNUP_ACTION = "https://buttondown.com/api/emails/embed-subscribe/newcobrief"
+
+
 def slug(city: str) -> str:
     return city.lower().replace(" ", "-")
 
@@ -222,7 +227,7 @@ def landing(sample: tuple, totals: dict, root: str) -> str:
     r, c = sample
     raw_row = " | ".join(f"<span>{esc(r.get(k, ''))}</span>" for k in ("entityid", "entityname", "principalcity", "principalstate", "principalzipcode", "entitytype", "entitystatus", "jurisdictonofformation", "entityformdate"))
     cities = "".join(f'<li><a href="{root}{slug(ct)}/">{esc(ct)}</a> <span class="sans" style="color:var(--ink-3);font-size:13px">{totals.get(ct, 0)} worth reading</span></li>' for ct in LAUNCH_CITIES)
-    options = "".join(f'<option>{esc(ct)}</option>' for ct in LAUNCH_CITIES)
+    options = "".join(f'<option value="{slug(ct)}">{esc(ct)}</option>' for ct in LAUNCH_CITIES)
     body = f"""<main class="landing">
 <div class="hero"><h1>New businesses, sorted for the people who sell to them.</h1>
 <p class="lede">Every week the state records about two thousand new companies. Most are holding companies, shells, and names that say nothing. NewCo Brief cuts those, infers the trade from what is left, and writes one line for a commercial insurance broker on each.</p>
@@ -235,9 +240,9 @@ def landing(sample: tuple, totals: dict, root: str) -> str:
 <ul class="cities-list">{cities}</ul>
 <h2>Get one city by email, free</h2>
 <p>Every Monday morning. No card. One city is always free; paid plans will add the whole state and the whole office.</p>
-<form class="signup" action="#" method="post" data-todo="wire to an email service before launch">
+<form class="signup" action="{SIGNUP_ACTION}" method="post">
 <label for="email">Email</label><input id="email" name="email" type="email" required placeholder="you@agency.com">
-<label for="city">City</label><select id="city" name="city">{options}</select>
+<label for="city">City</label><select id="city" name="tag">{options}</select>
 <button type="submit">Send me the Monday brief</button>
 <p class="fine">We publish city and ZIP only, never street addresses, owner names, or phone numbers. Unsubscribe in one click.</p></form>
 </main>"""
