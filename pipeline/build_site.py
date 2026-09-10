@@ -160,6 +160,18 @@ def page(title: str, body: str, root: str, current: str = "", desc: str = DESCRI
 </div></body></html>"""
 
 
+def signup_form(selected: str = "") -> str:
+    """The email signup box, with one city preselected on city pages."""
+    options = "".join(f'<option value="{slug(ct)}"{" selected" if ct == selected else ""}>{esc(ct)}</option>' for ct in LAUNCH_CITIES)
+    return f"""<h2>Get {esc(selected) if selected else "one city"} by email, free</h2>
+<p>Every Monday morning. No card. One city is always free; paid plans will add the whole state and the whole office.</p>
+<form class="signup" action="{SIGNUP_ACTION}" method="post">
+<label for="email">Email</label><input id="email" name="email" type="email" required placeholder="you@agency.com">
+<label for="city">City</label><select id="city" name="tag">{options}</select>
+<button type="submit">Send me the Monday brief</button>
+<p class="fine">We publish city and ZIP only, never street addresses, owner names, or phone numbers. Unsubscribe in one click.</p></form>"""
+
+
 def type_label(r: dict) -> str:
     return ENTITY_TYPE_LABELS.get(r.get("entitytype", ""), r.get("entitytype", ""))
 
@@ -219,6 +231,7 @@ def city_page(city: str, crows: list, filed: int, cache: dict, root: str) -> str
         body.append('</ul></section>')
     if not kept and not unknown:
         body.append('<p style="color:var(--ink-3);font-style:italic;margin:32px 0 0">Entries appear here after the first classification run.</p>')
+    body.append(f'<div class="landing" style="margin-top:8px">{signup_form(city)}</div>')
     return page(f"New businesses in {city} this week — {SITE_NAME}", "".join(body), root, current=city,
                 desc=f"Newly formed businesses in {city}, Colorado this week, filtered to real operating companies and tagged by industry. {STRAPLINE}")
 
@@ -227,7 +240,6 @@ def landing(sample: tuple, totals: dict, root: str) -> str:
     r, c = sample
     raw_row = " | ".join(f"<span>{esc(r.get(k, ''))}</span>" for k in ("entityid", "entityname", "principalcity", "principalstate", "principalzipcode", "entitytype", "entitystatus", "jurisdictonofformation", "entityformdate"))
     cities = "".join(f'<li><a href="{root}{slug(ct)}/">{esc(ct)}</a> <span class="sans" style="color:var(--ink-3);font-size:13px">{totals.get(ct, 0)} worth reading</span></li>' for ct in LAUNCH_CITIES)
-    options = "".join(f'<option value="{slug(ct)}">{esc(ct)}</option>' for ct in LAUNCH_CITIES)
     body = f"""<main class="landing">
 <div class="hero"><h1>New businesses, sorted for the people who sell to them.</h1>
 <p class="lede">Every week the state records about two thousand new companies. Most are holding companies, shells, and names that say nothing. NewCo Brief cuts those, infers the trade from what is left, and writes one line for a commercial insurance broker on each.</p>
@@ -238,13 +250,7 @@ def landing(sample: tuple, totals: dict, root: str) -> str:
 <h2>This week's city pages</h2>
 <p>Free, public, and refreshed nightly. Each shows the last seven days, grouped by industry, with a link to the official state record on every entry.</p>
 <ul class="cities-list">{cities}</ul>
-<h2>Get one city by email, free</h2>
-<p>Every Monday morning. No card. One city is always free; paid plans will add the whole state and the whole office.</p>
-<form class="signup" action="{SIGNUP_ACTION}" method="post">
-<label for="email">Email</label><input id="email" name="email" type="email" required placeholder="you@agency.com">
-<label for="city">City</label><select id="city" name="tag">{options}</select>
-<button type="submit">Send me the Monday brief</button>
-<p class="fine">We publish city and ZIP only, never street addresses, owner names, or phone numbers. Unsubscribe in one click.</p></form>
+{signup_form()}
 </main>"""
     return page(f"{SITE_NAME} — {STRAPLINE}", body, root)
 
