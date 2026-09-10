@@ -10,7 +10,10 @@ Four steps, each its own script, all in this folder:
 | 4 | build_sample.py | Writes one Markdown page per city into data/sample/ for weekly review | No |
 | 5 | build_site.py | Generates the public website into docs/ (landing page + ten city pages), following 04-Design-Decisions.pdf | No |
 
-run.py runs all five in order.
+| 6 | build_email.py | Builds the Monday email for each city into data/email/ (open a .html there to preview). Same data as the city pages, one column, tables and inline styles so Gmail and Outlook agree. Long weeks show the first entries in full and the rest as one-liners, to stay under Gmail's 102 KB clip | No |
+| 7 | send_email.py | Pushes the emails to Buttondown, one per city, to subscribers tagged with that city. Creates DRAFTS unless run with `--send` | No (needs the Buttondown key) |
+
+run.py runs steps 1 to 5 in order. The email steps run on Mondays (see below).
 
 To preview the site, open docs/index.html in a browser. GitHub Pages will serve the docs/ folder once the repo is pushed.
 
@@ -37,6 +40,27 @@ The .env file is ignored by git and never leaves this Mac.
 
 ```
 cd ~/Desktop/"Business Brief Project" && source .venv/bin/activate
+```
+
+## Buttondown key (one time)
+
+1. Sign in at https://buttondown.com with kjoysky31@gmail.com. Click **API** in the left sidebar, then **Create API key** (or copy the key shown). 
+2. Add it to the .env file on this Mac, one line under the Anthropic key:
+
+```
+echo 'BUTTONDOWN_API_KEY=PASTE-YOUR-KEY-HERE' >> ~/Desktop/"Business Brief Project"/pipeline/.env
+```
+
+3. Add the same key to GitHub: repo, Settings, Secrets and variables, Actions, **New repository secret**, name `BUTTONDOWN_API_KEY`.
+
+## Monday email, automatically
+
+`.github/workflows/monday-email.yml` runs every Monday at about 7 AM Denver time: fetch, filter, classify anything new, build the ten emails, push them to Buttondown as **drafts**. Open https://buttondown.com/emails, read one, click Send. When the drafts have looked right for a few weeks, set the repo variable `AUTO_SEND` to `true` (repo, Settings, Secrets and variables, Actions, Variables tab) and the workflow sends them itself.
+
+To run it by hand: GitHub repo, Actions tab, "Monday email", "Run workflow". Tick "Send immediately" only if you mean it. Locally:
+
+```
+cd ~/Desktop/"Business Brief Project" && git pull && source .venv/bin/activate && python pipeline/send_email.py
 ```
 
 ## Nightly, automatically

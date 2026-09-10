@@ -1,0 +1,66 @@
+# Monday email for NewCo Brief.
+# Every Monday morning: pull the last 7 days, filter, classify anything new (normally nothing, the
+# nightly run did it), build one email per city, and push them to Buttondown tagged by city.
+# Emails are created as DRAFTS unless the repo variable AUTO_SEND is "true"
+# (GitHub repo, Settings, Secrets and variables, Actions, Variables tab).
+name: Monday email
+
+on:
+  schedule:
+    - cron: "0 13 * * 1"   # 13:00 UTC Monday = 7 AM Denver in summer, 6 AM in winter
+  workflow_dispatch:
+    inputs:
+      send:
+        description: "Send immediately instead of creating drafts"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: nightly            # never overlap with the nightly refresh
+  cancel-in-progress: false
+
+jobs:
+  email:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install
+        run: pip install -r pipeline/requirements.txt
+
+      - name: Fetch, filter, classify
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python pipeline/fetch.py
+          python pipeline/filter.py
+          python pipeline/classify.py
+
+      - name: Build and push emails to Buttondown
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+        run: |
+          if [ -z "$BUTTONDOWN_API_KEY" ]; then
+            echo "BUTTONDOWN_API_KEY secret not set; building emails only."
+            python pipeline/build_email.py
+          elif [ "${{ vars.AUTO_SEND }}" = "true" ] || [ "${{ inputs.send }}" = "true" ]; then
+            python pipeline/send_email.py --send
+          else
+            python pipeline/send_email.py
+          fi
+
+      - name: Commit classification cache
+        if: always()
+        run: |
+          git config user.name "newcobrief-bot"
+          git config user.email "newcobrief-bot@users.noreply.github.com"
+          git add data/classified.json
+          if git diff --cached --quiet; then echo "Nothing changed."; else git commit -m "Monday email $(date -u +%Y-%m-%d)" && git push; fi

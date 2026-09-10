@@ -10,3 +10,5 @@ data/sample/
 *.pdf
 00-DECISIONS.md
 02-Design-Brief.md
+# Built emails and send log
+data/email/
