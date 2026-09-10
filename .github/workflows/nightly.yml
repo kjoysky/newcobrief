@@ -1,0 +1,50 @@
+# Nightly refresh of NewCo Brief.
+# Runs on GitHub's servers, so the Mac can be asleep. Fetches the last 7 days of Colorado
+# filings, filters, classifies only names not already in data/classified.json, rebuilds docs/,
+# and commits the result. GitHub Pages redeploys from docs/ on every push to main.
+name: Nightly refresh
+
+on:
+  schedule:
+    - cron: "17 10 * * *"   # 10:17 UTC = 4:17 AM Denver in summer, 3:17 AM in winter
+  workflow_dispatch:         # "Run workflow" button on the Actions tab for a manual run
+
+permissions:
+  contents: write
+
+concurrency:
+  group: nightly
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install
+        run: pip install -r pipeline/requirements.txt
+
+      - name: Fetch, filter, classify, build
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python pipeline/run.py
+
+      # Runs even if a step above failed, so finished classification batches are never paid for twice.
+      - name: Commit and push
+        if: always()
+        run: |
+          git config user.name "newcobrief-bot"
+          git config user.email "newcobrief-bot@users.noreply.github.com"
+          git add data/classified.json docs
+          if git diff --cached --quiet; then
+            echo "Nothing changed."
+          else
+            git commit -m "Nightly refresh $(date -u +%Y-%m-%d)"
+            git push
+          fi

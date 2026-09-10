@@ -39,10 +39,20 @@ The .env file is ignored by git and never leaves this Mac.
 cd ~/Desktop/"Business Brief Project" && source .venv/bin/activate
 ```
 
-## Every run
+## Nightly, automatically
+
+GitHub Actions runs the whole pipeline every night at about 4 AM Denver time (`.github/workflows/nightly.yml`), commits the new `data/classified.json` and `docs/`, and GitHub Pages redeploys newcobrief.com. The API key lives in the repo's Actions secrets as `ANTHROPIC_API_KEY`, never in the code. To run it by hand: GitHub repo, Actions tab, "Nightly refresh", "Run workflow".
+
+Because the robot commits to main every night, always pull before running anything locally:
 
 ```
-cd ~/Desktop/"Business Brief Project" && source .venv/bin/activate && python pipeline/run.py
+cd ~/Desktop/"Business Brief Project" && git pull
+```
+
+## Running it by hand on the Mac
+
+```
+cd ~/Desktop/"Business Brief Project" && git pull && source .venv/bin/activate && python pipeline/run.py
 ```
 
 Then open data/sample/00-summary.md and the city page you want to review. Flag anything wrong and tell Claude; the fix goes into filter.py or the prompt in classify.py.

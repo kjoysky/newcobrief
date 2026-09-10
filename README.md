@@ -7,5 +7,6 @@ A weekly brief of newly formed businesses, filtered to real operating companies 
 - `pipeline/` fetches the public Colorado Secretary of State feed, filters the noise, classifies names with Claude, and generates the site.
 - `docs/` is the generated static site, served by GitHub Pages.
 - `data/classified.json` caches every name already classified so re-runs only send new ones.
+- `.github/workflows/nightly.yml` refreshes the site every night on GitHub Actions and commits the result.
 
 Business records are published by the Colorado Secretary of State and are in the public domain. Industry and commentary are inferred from the business name and labeled as inferred. City and ZIP only; no street addresses, owner names, or phone numbers are published.
