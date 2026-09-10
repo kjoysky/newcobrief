@@ -12,6 +12,10 @@ CLASSIFIED_FILE = DATA_DIR / "classified.json"   # cache of every name Claude ha
 DATASET_URL = "https://data.colorado.gov/resource/4ykn-tg5h.json"
 STATE_RECORD_URL = "https://www.coloradosos.gov/biz/BusinessEntityDetail.do?quitButtonDestination=BusinessEntityResults&fileId={entityid}"
 
+# A street address shared by this many filings in one week is treated as a mailbox (registered agent,
+# virtual office) and dropped. Reviewer feedback 2026-09-10: 182 of 436 Denver rows sat at 1500 N Grant St.
+SHARED_ADDRESS_MIN = 6
+
 # How many days back to pull on each run. 7 for the weekly brief; the site shows the last 7.
 DAYS_BACK = 7
 

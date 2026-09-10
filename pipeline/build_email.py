@@ -16,8 +16,8 @@ import sys
 from collections import defaultdict
 from datetime import date
 
-from build_site import (CONF_ORDER, SITE_NAME, STRAPLINE, THIN_WEEK, display_name, esc, fmt_date, short_date,
-                        slug, type_label)
+from build_site import (CONF_ORDER, SITE_DIR, SITE_NAME, STRAPLINE, THIN_WEEK, WEEK, display_name, esc, fmt_date,
+                        next_monday, page, short_date, slug, span_label, type_label)
 from config import (CLASSIFIED_FILE, DATA_DIR, FILTERED_DIR, INDUSTRIES, LAUNCH_CITIES, RAW_DIR,
                     STATE_RECORD_URL, worth_reading)
 
@@ -78,17 +78,16 @@ def compact_block(entries: list) -> str:
     return f'<p style="margin:0;font-family:{SERIF};font-size:15px;line-height:1.7;color:{INK};">{lines}</p>'
 
 
-def city_email(city: str, crows: list, filed: int, cache: dict) -> tuple[str, str]:
-    """Returns (subject, body fragment). The fragment is what goes to Buttondown; it has no <html> wrapper."""
-    groups, unknown = defaultdict(list), []
+def city_email(city: str, crows: list, filed: int, cache: dict, sample_n: int | None = None) -> tuple[str, str]:
+    """Returns (subject, body fragment). The fragment is what goes to Buttondown; it has no <html> wrapper.
+    sample_n builds the public sample issue instead: the first n entries in full, the rest as counts."""
+    groups = defaultdict(list)
     for r in crows:
         c = cache.get(r["entityid"])
-        if not c or not c["operating"]:
-            continue
-        (groups[c["industry"]] if worth_reading(c) else unknown).append((r, c))
+        if c and worth_reading(c):
+            groups[c["industry"]].append((r, c))
     for ind in groups:
         groups[ind].sort(key=lambda rc: (CONF_ORDER[rc[1]["confidence"]], rc[0]["entityname"].lower()))
-    unknown.sort(key=lambda rc: rc[0]["entityname"].lower())
     kept = sum(len(v) for v in groups.values())
     cut = filed - kept
     dates = sorted(r["entityformdate"][:10] for r in crows) or [date.today().isoformat()]
@@ -103,7 +102,7 @@ def city_email(city: str, crows: list, filed: int, cache: dict) -> tuple[str, st
     for i in range(max((len(v) for v in groups.values()), default=0)):
         order += [groups[ind][i][0]["entityid"] for ind in INDUSTRIES if ind in groups and i < len(groups[ind])]
 
-    def render(n_full: int, show_plain: bool, compact: bool = True) -> str:
+    def render(n_full: int, compact: bool = True) -> str:
         full_ids = set(order[:n_full])
         # The marker tells Buttondown to keep this as raw HTML instead of converting it into its rich editor.
         parts = ['<!-- buttondown-editor-mode: plaintext -->', f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;margin:0 auto;">']
@@ -138,21 +137,9 @@ def city_email(city: str, crows: list, filed: int, cache: dict) -> tuple[str, st
                 parts.append(row(f'<p style="margin:0 0 4px;font-family:{SANS};font-size:11px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;color:{INK3};">Also this week · {len(rest)}</p>'
                                  + compact_block(rest), "14px 0 0"))
             elif rest:
-                parts.append(row(f'<p style="margin:0;font-family:{SANS};font-size:13px;color:{INK2};">and {len(rest)} more in {esc(ind.lower())}. <a href="{esc(page_url)}" style="color:{ACCENT};font-weight:bold;text-decoration:none;">See all {kept} in {esc(city)} &rarr;</a></p>', "12px 0 0"))
-        # Plain list
-        if unknown:
-            parts.append(row(f'<div style="border-bottom:1px solid {RULE};padding-bottom:6px;">{kicker(f"Trade not inferable from the name · {len(unknown)}")}</div>'
-                             f'<p style="margin:6px 0 0;font-family:{SERIF};font-style:italic;font-size:15px;color:{INK2};">Real filings whose names say little or nothing about the business. Listed so nothing real is quietly dropped.</p>', "32px 0 0"))
-            if show_plain:
-                items = "".join(
-                    f'<tr><td style="padding:7px 0;border-bottom:1px solid {RULE};font-family:{SERIF};font-size:15px;color:{INK};">{esc(display_name(r["entityname"]))}'
-                    f' <span style="font-family:{SANS};font-size:11.5px;color:{INK3};white-space:nowrap;">{esc((r.get("principalcity") or "").title())} {esc(r.get("principalzipcode", ""))} · {esc(type_label(r))} · {esc(short_date(r["entityformdate"]))} · '
-                    f'<a href="{esc(STATE_RECORD_URL.format(entityid=r["entityid"]))}" style="color:{ACCENT};text-decoration:none;">record {esc(r["entityid"])}</a></span></td></tr>'
-                    for r, _ in unknown)
-                parts.append(f'<tr><td><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">{items}</table></td></tr>')
-            else:
-                parts.append(row(f'<p style="margin:0;font-family:{SANS};font-size:13px;color:{INK2};"><a href="{esc(page_url)}" style="color:{ACCENT};font-weight:bold;text-decoration:none;">See the full list on the {esc(city)} page &rarr;</a></p>', "10px 0 0"))
-        if not kept and not unknown:
+                where = "in the full email" if sample_n is not None else "this week"
+                parts.append(row(f'<p style="margin:0;font-family:{SANS};font-size:13px;color:{INK2};">and {len(rest)} more in {esc(ind.lower())}, {where}.</p>', "12px 0 0"))
+        if not kept:
             parts.append(row(f'<p style="margin:0;font-family:{SERIF};font-style:italic;color:{INK3};">Nothing to report this week.</p>', "24px 0 0"))
         # Footer
         parts.append(row(
@@ -162,23 +149,26 @@ def city_email(city: str, crows: list, filed: int, cache: dict) -> tuple[str, st
         parts.append('</table>')
         return "".join(parts)
 
-    # Fit the budget, in order: everything in full; drop the plain list to a link; fewer full entries with
-    # the rest as one-liners; as a last resort, drop the one-liners and let a link stand in for them.
+    if sample_n is not None:
+        return subject, render(sample_n, compact=False)
+
+    # Fit the budget, in order: everything in full; fewer full entries with the rest as one-liners;
+    # as a last resort, drop the one-liners and show counts instead.
     def fits(b: str) -> bool:
         return len(b.encode()) <= EMAIL_BUDGET
 
     def largest(compact: bool) -> str:
-        lo, hi, best = 0, len(order), render(0, False, compact)
+        lo, hi, best = 0, len(order), render(0, compact)
         while lo <= hi:                       # binary search the most full entries that still fit
             mid = (lo + hi) // 2
-            b = render(mid, False, compact)
+            b = render(mid, compact)
             if fits(b):
                 best, lo = b, mid + 1
             else:
                 hi = mid - 1
         return best
 
-    body = render(len(order), True)
+    body = render(len(order))
     if not fits(body):
         body = largest(True)
     if not fits(body):
@@ -191,12 +181,31 @@ def preview_page(subject: str, body: str) -> str:
             f'<title>{esc(subject)}</title></head><body style="margin:0;padding:16px;background:#ffffff;">{body}</body></html>')
 
 
+SAMPLE_CITY = "Denver"
+SAMPLE_FULL = 6
+
+
+def sample_page(subject: str, body: str, kept: int, root: str) -> str:
+    """docs/sample/: the current city email as it goes out Monday, cut to the first few entries."""
+    email = body.replace("<!-- buttondown-editor-mode: plaintext -->", "")
+    intro = (f'<main class="prose"><h1>A sample issue</h1>'
+             f'<p>This is the {esc(SAMPLE_CITY)} edition for the week of {esc(WEEK["span"])}, as it goes out on Monday, cut to the first '
+             f'{SAMPLE_FULL} entries. Subscribers get all {kept}, in the same form, every Monday morning. '
+             f'<a href="{root}#top">One city is free.</a></p>'
+             f'<p class="kicker" style="margin-top:28px">Subject line</p><p style="margin:4px 0 0;font-size:17px">{esc(subject)}</p>'
+             f'<div class="sample-email">{email}</div>'
+             f'<p style="margin-top:28px"><a href="{root}#top">Get {esc(SAMPLE_CITY)} or any other city by email, free &rarr;</a></p></main>')
+    return page(f"Sample issue — {SITE_NAME}", intro, root, desc=f"What the Monday email looks like: the {SAMPLE_CITY} edition, first {SAMPLE_FULL} entries.")
+
+
 def build_all(only_city: str | None = None) -> dict:
     files = sorted(f for f in FILTERED_DIR.glob("*.json") if not f.name.endswith("-dropped.json"))
     rows = json.loads(files[-1].read_text())
     raw = json.loads((RAW_DIR / files[-1].name).read_text()) if (RAW_DIR / files[-1].name).exists() else rows
     cache = json.loads(CLASSIFIED_FILE.read_text()) if CLASSIFIED_FILE.exists() else {}
     EMAIL_DIR.mkdir(exist_ok=True)
+    dates = sorted(r["entityformdate"][:10] for r in rows) or [date.today().isoformat()]
+    WEEK["span"], WEEK["next_send"] = span_label(dates[0], dates[-1]), next_monday(date.today()).strftime("%B %-d")
     manifest = {}
     for city in LAUNCH_CITIES:
         if only_city and city.lower() != only_city.lower():
@@ -209,6 +218,13 @@ def build_all(only_city: str | None = None) -> dict:
                           "worth_reading": sum(1 for r in crows if worth_reading(cache.get(r["entityid"])))}
         print(f"{city:17} {manifest[city]['worth_reading']:4} worth reading  {manifest[city]['bytes']//1000:3} KB  {subject}")
     (EMAIL_DIR / "manifest.json").write_text(json.dumps(manifest, indent=1))
+    if not only_city or only_city.lower() == SAMPLE_CITY.lower():
+        crows = [r for r in rows if (r.get("principalcity") or "").upper() == SAMPLE_CITY.upper()]
+        filed = sum(1 for r in raw if (r.get("principalcity") or "").upper() == SAMPLE_CITY.upper())
+        subject, body = city_email(SAMPLE_CITY, crows, filed, cache, sample_n=SAMPLE_FULL)
+        (SITE_DIR / "sample").mkdir(exist_ok=True)
+        (SITE_DIR / "sample" / "index.html").write_text(sample_page(subject, body, manifest[SAMPLE_CITY]["worth_reading"], "../"))
+        print(f"Wrote sample issue to {SITE_DIR / 'sample'}")
     print(f"Wrote {len(manifest)} emails to {EMAIL_DIR}")
     return manifest
 

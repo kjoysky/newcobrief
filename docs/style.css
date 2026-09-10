@@ -45,6 +45,28 @@ section.uninferable .lede{font-style:italic;color:var(--ink-2);margin:6px 0 0}
 .gate a{font-weight:600}
 section.industry .kicker.also{color:var(--ink-3);border:0;margin:22px 0 4px;padding:0}
 .plain li .meta{font-family:var(--sans);font-stretch:87.5%;font-weight:550;font-size:12.5px;color:var(--ink-3);font-variant-numeric:tabular-nums;white-space:nowrap}
+.week{font-family:var(--sans);font-stretch:87.5%;font-weight:550;font-size:12.5px;color:var(--ink-3);margin:14px 0 0;font-variant-numeric:tabular-nums}
+.week b{font-weight:600;color:var(--ink-2)}
+.counts{list-style:none;padding:0;margin:14px 0 0;max-width:480px}
+.counts li{display:flex;justify-content:space-between;align-items:baseline;padding:8px 0;border-bottom:1px solid var(--rule);font-size:17px}
+.counts li .n{font-family:var(--sans);font-stretch:87.5%;font-weight:600;font-size:14px;color:var(--accent);font-variant-numeric:tabular-nums}
+.signup.top{margin-top:26px}
+.signup .row{display:flex;gap:10px;align-items:stretch;margin-top:6px}
+.signup .row input{flex:1;min-width:0}
+.signup .row button{margin:0;white-space:nowrap}
+.signup .next{font-family:var(--sans);font-stretch:87.5%;font-weight:600;font-size:12.5px;color:var(--accent);margin:12px 0 0}
+.signup .alt{font-family:var(--sans);font-stretch:87.5%;font-weight:550;font-size:13px;color:var(--ink-3);margin:8px 0 0}
+.landing ul.cities-list{columns:1;max-width:520px}
+.landing ul.cities-list li{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--rule)}
+.landing ul.cities-list .fig{font-family:var(--sans);font-stretch:87.5%;font-weight:550;font-size:13px;color:var(--ink-3);font-variant-numeric:tabular-nums;white-space:nowrap}
+.landing ul.cities-list .fig b{font-weight:600;color:var(--accent)}
+.hero .figures{margin-top:26px}
+.prose{max-width:34em;font-size:18px;line-height:1.6}
+.prose h1{font-size:36px;margin:40px 0 8px}.prose h2{font-family:var(--serif);font-weight:600;letter-spacing:-.02em;font-size:24px;margin:36px 0 8px}
+.prose p{margin:12px 0 0}
+.sample-email{border:1px solid var(--rule);padding:8px 16px 0;margin:24px 0 0;overflow-x:auto}
+footer nav{margin:0 0 12px;display:flex;flex-wrap:wrap;gap:6px 16px;font-weight:600}
+footer nav a{color:var(--ink-2)}
 footer{margin:64px 0 40px;padding-top:16px;border-top:1px solid var(--rule);font-family:var(--sans);font-stretch:87.5%;font-weight:550;font-size:12.5px;color:var(--ink-2);line-height:1.6}
 footer p{margin:0 0 8px}
 /* landing */
@@ -61,12 +83,11 @@ footer p{margin:0 0 8px}
 .transform .entry{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
 .landing>h2{font-family:var(--serif);font-weight:600;letter-spacing:-.02em;font-size:28px;margin:52px 0 10px}
 .landing>p{max-width:27em;font-size:18px;line-height:1.6}
-.landing ul.cities-list{padding:0;margin:14px 0 0;list-style:none;columns:2;max-width:480px;font-size:17px}
-.landing ul.cities-list li{padding:4px 0}
+.landing ul.cities-list{padding:0;margin:14px 0 0;list-style:none;font-size:17px}
 .signup{margin:40px 0 0;border-top:2px solid var(--ink);padding-top:20px;max-width:520px}
 .signup label{display:block;font-family:var(--sans);font-stretch:87.5%;font-weight:600;font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);margin:14px 0 6px}
 .signup input,.signup select{width:100%;font-family:var(--sans);font-stretch:87.5%;font-weight:550;font-size:16px;padding:10px 12px;border:1px solid var(--field-line);background:var(--page);color:var(--ink);border-radius:0}
 .signup button{margin-top:16px;font-family:var(--sans);font-stretch:87.5%;font-weight:600;font-size:15px;letter-spacing:.02em;padding:12px 20px;background:var(--accent);color:#fff;border:0;cursor:pointer;border-radius:0}
 .signup button:hover{background:var(--accent-deep)}
 .signup .fine{font-family:var(--sans);font-stretch:87.5%;font-size:12.5px;color:var(--ink-3);margin:10px 0 0}
-@media (max-width:600px){body{font-size:16px}h1{font-size:34px}.hero h1{font-size:32px}.figures{gap:22px}.figures b{font-size:28px}.entry h2{font-size:21px}.entry p.note{font-size:17px}.landing ul.cities-list{columns:1}}
+@media (max-width:600px){body{font-size:16px}h1{font-size:34px}.hero h1{font-size:32px}.figures{gap:22px}.figures b{font-size:28px}.entry h2{font-size:21px}.entry p.note{font-size:17px}.signup .row{flex-direction:column}}

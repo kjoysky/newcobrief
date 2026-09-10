@@ -90,3 +90,8 @@ python pipeline/classify.py --limit 40
 ## Settings
 
 Everything adjustable is in config.py: launch cities, the industry list, days back, batch size, model, effort.
+
+- `SHARED_ADDRESS_MIN` (config.py): a street shared by this many filings in one week is treated as a registered-agent or virtual-office mailbox and dropped. The agent-address rule also compares streets without suite numbers now.
+- `FULL_PER_INDUSTRY` and `LEAD_INDUSTRY` (build_site.py): public city pages show one trade in full (construction and trades, up to 3 entries) and every other trade as a count. The Monday email carries everything.
+- `AUTHOR`, `CONTACT_EMAIL`, `PRICE_LINE` (build_site.py): the About page, the contact links, and the "Paid plans from $49/mo" line.
+- `SAMPLE_CITY` / `SAMPLE_FULL` (build_email.py): the public sample issue at /sample/ is the Denver email cut to the first 6 entries; run.py builds it after the site.
