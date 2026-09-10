@@ -105,7 +105,8 @@ def city_email(city: str, crows: list, filed: int, cache: dict) -> tuple[str, st
 
     def render(n_full: int, show_plain: bool, compact: bool = True) -> str:
         full_ids = set(order[:n_full])
-        parts = [f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;margin:0 auto;">']
+        # The marker tells Buttondown to keep this as raw HTML instead of converting it into its rich editor.
+        parts = ['<!-- buttondown-editor-mode: plaintext -->', f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;margin:0 auto;">']
         # Masthead
         parts.append(row(
             f'<p style="margin:0;font-family:{SANS};font-size:22px;line-height:1;color:{INK};letter-spacing:-.5px;"><b>NewCo</b> Brief</p>'
