@@ -40,6 +40,10 @@ section.uninferable{margin:44px 0 0}
 section.uninferable .lede{font-style:italic;color:var(--ink-2);margin:6px 0 0}
 .plain{list-style:none;padding:0;margin:14px 0 0}
 .plain li{padding:9px 0;border-bottom:1px solid var(--rule);font-size:16.5px;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 14px}
+.plain li .trade{font-family:var(--sans);font-stretch:87.5%;font-weight:600;font-size:13px;color:var(--accent)}
+.gate{font-family:var(--sans);font-stretch:87.5%;font-weight:550;font-size:14px;color:var(--ink-2);margin:18px 0 0;max-width:40em}
+.gate a{font-weight:600}
+section.industry .kicker.also{color:var(--ink-3);border:0;margin:22px 0 4px;padding:0}
 .plain li .meta{font-family:var(--sans);font-stretch:87.5%;font-weight:550;font-size:12.5px;color:var(--ink-3);font-variant-numeric:tabular-nums;white-space:nowrap}
 footer{margin:64px 0 40px;padding-top:16px;border-top:1px solid var(--rule);font-family:var(--sans);font-stretch:87.5%;font-weight:550;font-size:12.5px;color:var(--ink-2);line-height:1.6}
 footer p{margin:0 0 8px}

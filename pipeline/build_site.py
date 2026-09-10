@@ -19,6 +19,9 @@ STRAPLINE = "New businesses. Earlier opportunities."
 DESCRIPTION = ("NewCo Brief finds newly formed businesses, filters out the noise, and gives commercial "
                "professionals an earlier look at companies entering their market.")
 THIN_WEEK = 20
+# Public city pages show this many full entries per industry; the rest are one-liners. Decided 2026-09-10:
+# the free email and paid plans carry every entry in full, so the public page gates convenience, not data.
+FULL_PER_INDUSTRY = 3
 CONF_ORDER = {"high": 0, "medium": 1, "low": 2}
 
 FONTS = ("https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@87.5,400..700;125,400..700"
@@ -67,6 +70,10 @@ section.uninferable{margin:44px 0 0}
 section.uninferable .lede{font-style:italic;color:var(--ink-2);margin:6px 0 0}
 .plain{list-style:none;padding:0;margin:14px 0 0}
 .plain li{padding:9px 0;border-bottom:1px solid var(--rule);font-size:16.5px;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 14px}
+.plain li .trade{font-family:var(--sans);font-stretch:87.5%;font-weight:600;font-size:13px;color:var(--accent)}
+.gate{font-family:var(--sans);font-stretch:87.5%;font-weight:550;font-size:14px;color:var(--ink-2);margin:18px 0 0;max-width:40em}
+.gate a{font-weight:600}
+section.industry .kicker.also{color:var(--ink-3);border:0;margin:22px 0 4px;padding:0}
 .plain li .meta{font-family:var(--sans);font-stretch:87.5%;font-weight:550;font-size:12.5px;color:var(--ink-3);font-variant-numeric:tabular-nums;white-space:nowrap}
 footer{margin:64px 0 40px;padding-top:16px;border-top:1px solid var(--rule);font-family:var(--sans);font-stretch:87.5%;font-weight:550;font-size:12.5px;color:var(--ink-2);line-height:1.6}
 footer p{margin:0 0 8px}
@@ -163,7 +170,7 @@ def page(title: str, body: str, root: str, current: str = "", desc: str = DESCRI
 def signup_form(selected: str = "") -> str:
     """The email signup box, with one city preselected on city pages."""
     options = "".join(f'<option value="{slug(ct)}"{" selected" if ct == selected else ""}>{esc(ct)}</option>' for ct in LAUNCH_CITIES)
-    return f"""<h2>Get {esc(selected) if selected else "one city"} by email, free</h2>
+    return f"""<h2 id="signup">Get {esc(selected) if selected else "one city"} by email, free</h2>
 <p>Every Monday morning. No card. One city is always free; paid plans will add the whole state and the whole office.</p>
 <form class="signup" action="{SIGNUP_ACTION}" method="post">
 <label for="email">Email</label><input id="email" name="email" type="email" required placeholder="you@agency.com">
@@ -210,7 +217,8 @@ def city_page(city: str, crows: list, filed: int, cache: dict, root: str) -> str
     body = [f'<div class="edition"><p class="kicker">This week in</p><h1>{esc(city)}</h1>'
             f'<p class="dateline">New businesses formed {fmt_date(dates[0])} to {fmt_date(dates[-1])}</p>'
             f'<div class="figures"><div><b>{filed}</b><span>Filed</span></div><div><b>{cut}</b><span>Cut</span></div>'
-            f'<div><b class="kept">{kept}</b><span>Worth reading</span></div></div></div>']
+            f'<div><b class="kept">{kept}</b><span>Worth reading</span></div></div>'
+            f'<p class="gate">This page shows {FULL_PER_INDUSTRY} full entries per trade and lists the rest by name. The Monday email carries all {kept} in full. <a href="#signup">One city is free.</a></p></div>']
     if kept < THIN_WEEK:
         body.append(f'<p class="notice">A thin week in {esc(city)}. The state recorded {filed} new entities here; after removing holding companies, registered-agent addresses, and names that reveal nothing, {kept} were worth a broker\'s time. We would rather show a short list than pad it.</p>')
     for ind in INDUSTRIES:
@@ -218,8 +226,18 @@ def city_page(city: str, crows: list, filed: int, cache: dict, root: str) -> str
         if not entries:
             continue
         body.append(f'<section class="industry"><p class="kicker">{esc(ind)} · {len(entries)}</p>')
-        for r, c in sorted(entries, key=lambda rc: (CONF_ORDER[rc[1]["confidence"]], rc[0]["entityname"].lower())):
+        ordered = sorted(entries, key=lambda rc: (CONF_ORDER[rc[1]["confidence"]], rc[0]["entityname"].lower()))
+        for r, c in ordered[:FULL_PER_INDUSTRY]:
             body.append(entry(r, c, city))
+        rest = ordered[FULL_PER_INDUSTRY:]
+        if rest:
+            body.append(f'<p class="kicker also">Also this week · {len(rest)}</p><ul class="plain">')
+            for r, c in rest:
+                trade = esc(c["detail"]) if c.get("detail") else esc(c["industry"].lower())
+                body.append(f'<li><span>{esc(display_name(r["entityname"]))} <span class="trade">{trade}</span></span>'
+                            f'<span class="meta">{esc((r.get("principalcity") or "").title())} {esc(r.get("principalzipcode", ""))} · {esc(type_label(r))} · {esc(short_date(r["entityformdate"]))} · '
+                            f'<a href="{esc(STATE_RECORD_URL.format(entityid=r["entityid"]))}" rel="noopener">record {esc(r["entityid"])}</a></span></li>')
+            body.append('</ul>')
         body.append('</section>')
     if unknown:
         body.append(f'<section class="uninferable"><p class="kicker">Trade not inferable from the name · {len(unknown)}</p>'
