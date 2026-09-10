@@ -1,0 +1,12 @@
+pipeline/.env
+.venv/
+__pycache__/
+.DS_Store
+# Contain street and agent addresses; never published
+data/raw/
+data/filtered/
+data/sample/
+# Business plans and internal decisions stay on the Mac, not on a public repo
+*.pdf
+00-DECISIONS.md
+02-Design-Brief.md

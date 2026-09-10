@@ -1,0 +1,68 @@
+:root{--page:#FFFFFF;--ink:#16241D;--ink-2:#4A5A52;--ink-3:#7B8A82;--rule:#D5DDD6;--n-05:#F4F5F3;--n-10:#EAECE8;
+--field:#E3EDE4;--field-line:#B7CCBB;--accent:#17754C;--accent-deep:#0E4E33;--stamp:#A33526;--stamp-05:#F7EEEC;
+--serif:"Newsreader",Georgia,"Times New Roman",serif;--sans:"Archivo","Helvetica Neue",Arial,sans-serif;}
+*{box-sizing:border-box}
+html{color-scheme:light}
+body{margin:0;background:var(--page);color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none;text-underline-offset:.15em}a:hover{color:var(--accent-deep);text-decoration:underline}
+.wrap{max-width:660px;margin:0 auto;padding:0 20px}
+.sans{font-family:var(--sans);font-stretch:87.5%}
+.masthead{padding:28px 0 0}
+.wordmark{font-family:var(--sans);font-stretch:125%;letter-spacing:-.03em;font-size:26px;line-height:1;color:var(--ink);text-decoration:none}
+.wordmark b{font-weight:700}.wordmark span{font-weight:400}
+.wordmark:hover{text-decoration:none;color:var(--ink)}
+.masthead-rule{border:0;border-top:2px solid var(--ink);margin:14px 0 8px}
+.strap{font-family:var(--sans);font-stretch:87.5%;font-weight:550;font-size:13px;letter-spacing:.02em;color:var(--ink-2);margin:0}
+nav.cities{font-family:var(--sans);font-stretch:87.5%;font-size:13px;font-weight:550;margin:18px 0 0;display:flex;flex-wrap:wrap;gap:6px 16px}
+nav.cities a{color:var(--ink-2)}nav.cities a[aria-current]{color:var(--accent)}
+.edition{background:var(--n-05);margin:28px -20px 0;padding:26px 20px 22px;border-bottom:3px solid var(--accent)}
+.kicker{font-family:var(--sans);font-stretch:87.5%;font-weight:600;font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);margin:0 0 6px}
+h1{font-family:var(--serif);font-weight:600;letter-spacing:-.02em;font-size:44px;line-height:1.05;margin:0}
+.dateline{font-style:italic;font-weight:400;font-size:18px;color:var(--ink-2);margin:8px 0 0}
+.figures{display:flex;gap:34px;margin:22px 0 0;flex-wrap:wrap}
+.figures div{display:flex;flex-direction:column}
+.figures b{font-family:var(--serif);font-weight:600;letter-spacing:-.02em;font-size:34px;line-height:1;color:var(--ink)}
+.figures b.kept{color:var(--accent)}
+.figures span{font-family:var(--sans);font-stretch:87.5%;font-weight:600;font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);margin-top:6px}
+.notice{background:var(--stamp-05);padding:14px 18px;margin:26px 0 0;font-size:16px;color:var(--ink-2)}
+section.industry{margin:44px 0 0}
+section.industry>.kicker{color:var(--accent);border-bottom:1px solid var(--rule);padding-bottom:8px;margin-bottom:0}
+article.entry{padding:26px 0;border-bottom:1px solid var(--rule)}
+.entry h2{font-family:var(--serif);font-weight:500;letter-spacing:-.02em;font-size:24px;line-height:1.15;margin:0 0 12px}
+.record{background:var(--field);border-left:2px solid var(--field-line);padding:10px 14px;font-family:var(--sans);font-stretch:87.5%;font-weight:550;font-size:13.5px;line-height:1.5;color:var(--ink);font-variant-numeric:tabular-nums;display:flex;flex-wrap:wrap;gap:4px 18px}
+.record span{white-space:nowrap}.record small{color:var(--ink-3);font-size:11px;letter-spacing:.06em;text-transform:uppercase;margin-right:5px}.record span{text-transform:none}
+.inferred{margin:14px 0 0;font-family:var(--sans);font-stretch:87.5%;font-weight:600;font-size:14px;color:var(--accent);display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.flag{font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--stamp);font-weight:600;border:1px solid var(--stamp);padding:2px 6px 1px;line-height:1.3}
+.entry p.note{font-size:18.5px;line-height:1.62;max-width:27em;margin:10px 0 0;color:var(--ink)}
+.source{margin:12px 0 0;font-family:var(--sans);font-stretch:87.5%;font-weight:550;font-size:12.5px;color:var(--ink-3)}
+.source a{color:var(--accent)}
+section.uninferable{margin:44px 0 0}
+section.uninferable .lede{font-style:italic;color:var(--ink-2);margin:6px 0 0}
+.plain{list-style:none;padding:0;margin:14px 0 0}
+.plain li{padding:9px 0;border-bottom:1px solid var(--rule);font-size:16.5px;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 14px}
+.plain li .meta{font-family:var(--sans);font-stretch:87.5%;font-weight:550;font-size:12.5px;color:var(--ink-3);font-variant-numeric:tabular-nums;white-space:nowrap}
+footer{margin:64px 0 40px;padding-top:16px;border-top:1px solid var(--rule);font-family:var(--sans);font-stretch:87.5%;font-weight:550;font-size:12.5px;color:var(--ink-2);line-height:1.6}
+footer p{margin:0 0 8px}
+/* landing */
+.hero{margin:44px 0 0}
+.hero h1{font-size:40px;text-wrap:balance}
+.hero .lede{font-size:21px;line-height:1.5;color:var(--ink-2);max-width:27em;margin:16px 0 0}
+.hero .cta{display:inline-block;margin:18px 0 0;font-family:var(--sans);font-stretch:87.5%;font-weight:600;font-size:14px;letter-spacing:.01em}
+.transform{margin:40px 0 0;max-width:640px}
+.transform .raw{background:var(--field);border-left:2px solid var(--field-line);padding:12px 14px;font-family:var(--sans);font-stretch:87.5%;font-weight:550;font-size:13px;line-height:1.5;color:var(--ink)}
+.transform .raw span{white-space:nowrap}
+.transform .join{display:flex;align-items:center;gap:12px;margin-left:26px}
+.transform .join .arm{width:2px;height:30px;background:var(--ink)}
+.transform .join .kicker{margin:0}
+.transform .entry{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.landing>h2{font-family:var(--serif);font-weight:600;letter-spacing:-.02em;font-size:28px;margin:52px 0 10px}
+.landing>p{max-width:27em;font-size:18px;line-height:1.6}
+.landing ul.cities-list{padding:0;margin:14px 0 0;list-style:none;columns:2;max-width:480px;font-size:17px}
+.landing ul.cities-list li{padding:4px 0}
+.signup{margin:40px 0 0;border-top:2px solid var(--ink);padding-top:20px;max-width:520px}
+.signup label{display:block;font-family:var(--sans);font-stretch:87.5%;font-weight:600;font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);margin:14px 0 6px}
+.signup input,.signup select{width:100%;font-family:var(--sans);font-stretch:87.5%;font-weight:550;font-size:16px;padding:10px 12px;border:1px solid var(--field-line);background:var(--page);color:var(--ink);border-radius:0}
+.signup button{margin-top:16px;font-family:var(--sans);font-stretch:87.5%;font-weight:600;font-size:15px;letter-spacing:.02em;padding:12px 20px;background:var(--accent);color:#fff;border:0;cursor:pointer;border-radius:0}
+.signup button:hover{background:var(--accent-deep)}
+.signup .fine{font-family:var(--sans);font-stretch:87.5%;font-size:12.5px;color:var(--ink-3);margin:10px 0 0}
+@media (max-width:600px){body{font-size:16px}h1{font-size:34px}.hero h1{font-size:32px}.figures{gap:22px}.figures b{font-size:28px}.entry h2{font-size:21px}.entry p.note{font-size:17px}.landing ul.cities-list{columns:1}}
