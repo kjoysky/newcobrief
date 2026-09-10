@@ -252,6 +252,7 @@ def main() -> None:
     SITE_DIR.mkdir(exist_ok=True)
     (SITE_DIR / "style.css").write_text(CSS.strip() + "\n")
     (SITE_DIR / ".nojekyll").write_text("")
+    (SITE_DIR / "CNAME").write_text("newcobrief.com\n")   # custom domain for GitHub Pages
 
     totals = {}
     for city in LAUNCH_CITIES:
