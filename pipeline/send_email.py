@@ -3,6 +3,9 @@
 Safe by default: every email is created as a DRAFT in Buttondown (Emails page) for Kristina to open and
 send. Pass --send to send them straight away; that is what the Monday workflow does once AUTO_SEND is on.
 Needs BUTTONDOWN_API_KEY in pipeline/.env (local) or in the repo's Actions secrets.
+Before building the audiences it enforces the free tier: a free subscriber (Buttondown type "regular")
+keeps only their first city tag; paying subscribers (premium, gifted, trialed, unpaid) keep every city they
+picked in the portal. Pass --no-enforce to skip that step.
 Usage:
     python3 pipeline/send_email.py                 # drafts for every city
     python3 pipeline/send_email.py --city Denver   # one city
@@ -48,6 +51,33 @@ def tag_ids() -> dict:
     return have
 
 
+# Buttondown subscriber types that mean "has paid access" (docs.buttondown.com/api-subscribers-type).
+PAID_TYPES = {"premium", "gifted", "trialed", "unpaid"}
+FREE_TYPES = {"regular"}
+
+
+def enforce_free_tier(city_tags: set) -> int:
+    """The free plan is one city. Buttondown's portal lets any subscriber add tags, so before each send trim
+    free subscribers to the first city tag they hold (non-city tags are left alone). Returns how many changed."""
+    changed, page = 0, 1
+    while True:
+        data = call("GET", f"/subscribers?type=regular&page={page}&page_size=100")
+        for sub in data.get("results", []):
+            if (sub.get("subscriber_type") or sub.get("type")) not in FREE_TYPES:
+                continue
+            tags = sub.get("tags") or []
+            cities = [t for t in tags if t in city_tags]
+            if len(cities) > 1:
+                keep = [t for t in tags if t not in city_tags] + cities[:1]
+                call("PATCH", f"/subscribers/{sub['id']}", {"tags": keep})
+                changed += 1
+                print(f"free tier: {sub['email_address']} kept {cities[0]}, dropped {', '.join(cities[1:])}")
+        if not data.get("next"):
+            break
+        page += 1
+    return changed
+
+
 def main() -> None:
     load_env()
     if not os.environ.get("BUTTONDOWN_API_KEY"):
@@ -57,6 +87,9 @@ def main() -> None:
     manifest = build_all(only) if "--no-build" not in sys.argv else json.loads((EMAIL_DIR / "manifest.json").read_text())
 
     ids = tag_ids()
+    if "--no-enforce" not in sys.argv:
+        n = enforce_free_tier(set(ids))
+        print(f"free tier enforced: {n} subscriber(s) trimmed to one city")
     results = {}
     for city, m in manifest.items():
         if only and city.lower() != only.lower():
