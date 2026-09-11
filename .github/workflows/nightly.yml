@@ -35,13 +35,24 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python pipeline/run.py
 
+      # New subscribers get this week's issue for their city overnight instead of waiting for Monday.
+      - name: First issue for new subscribers
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+        run: |
+          if [ -z "$BUTTONDOWN_API_KEY" ]; then
+            echo "BUTTONDOWN_API_KEY secret not set; skipping first issues."
+          else
+            python pipeline/first_issue.py
+          fi
+
       # Runs even if a step above failed, so finished classification batches are never paid for twice.
       - name: Commit and push
         if: always()
         run: |
           git config user.name "newcobrief-bot"
           git config user.email "newcobrief-bot@users.noreply.github.com"
-          git add data/classified.json docs
+          git add data/classified.json data/first-issue.json docs
           if git diff --cached --quiet; then
             echo "Nothing changed."
           else

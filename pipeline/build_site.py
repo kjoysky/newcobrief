@@ -365,21 +365,25 @@ def check_email_page(root: str) -> str:
     """Where Buttondown sends people right after the signup form (subscription_redirect_url)."""
     body = f"""<main class="prose">
 <h1>One more step: check your email</h1>
-<p>We just sent a confirmation link to the address you entered. Click it and you're on the list. If it isn't there in a minute or two, look in spam or promotions and move it to your inbox so Monday's brief lands where you'll see it.</p>
-<p>The first issue arrives <b>Monday, {esc(WEEK["next_send"])}</b>. Until then, the current week is on the site: <a href="{root}">pick a city</a>.</p>
+<p>We just sent a confirmation link to the address you entered. Click it and you're on the list. If it isn't there in a minute or two, look in spam or promotions and move it to your inbox so the brief lands where you'll see it.</p>
+<p>Once you confirm, your first issue arrives overnight with this week's list for your city. After that it comes every Monday morning.</p>
+<p>Don't want to wait? This week's entries are already on the site: <a href="{root}">pick a city</a>.</p>
 </main>"""
     return page(f"Check your email — {SITE_NAME}", body, root, desc="Confirm your NewCo Brief subscription from the email we just sent.")
 
 
 def welcome_page(root: str) -> str:
     """Where Buttondown sends people after they click the confirmation link (subscription_confirmation_redirect_url)."""
+    cities = " · ".join(f'<a href="{root}{slug(c)}/">{esc(c)}</a>' for c in LAUNCH_CITIES)
     body = f"""<main class="prose">
-<h1>You're subscribed</h1>
-<p>Your city's brief arrives every Monday morning from <b>brief@newcobrief.com</b>. The first one comes <b>Monday, {esc(WEEK["next_send"])}</b>. Reply to any issue and it reaches {esc(AUTHOR)} directly.</p>
-<p>Want every city, not just one? <a href="{root}plans/">Statewide is $49 a month</a>, and you can add it any time from the link at the bottom of an issue. No rush.</p>
-<p>In the meantime, this week's entries are already on the site: <a href="{root}">pick a city</a>.</p>
+<h1>You're in</h1>
+<p><b>This week's entries are on the site right now.</b> Pick your city: {cities}.</p>
+<p>The site shows the lead trade in full and counts the rest. <b>Your first issue arrives overnight</b> with every entry for your city, in full, with the one-line note on each. Then it comes every Monday morning from <b>brief@newcobrief.com</b>. Monday's issue covers the whole week, so it will repeat some of what you get tonight; after that, each Monday is new.</p>
+<p>Want to see exactly what lands in your inbox? <a href="{root}sample/">Here is a sample issue.</a></p>
+<p>Every city, not just one? <a href="{root}plans/">Statewide is $49 a month</a>, and you can add it any time from the link at the bottom of an issue. No rush.</p>
+<p>Reply to any issue and it reaches {esc(AUTHOR)} directly.</p>
 </main>"""
-    return page(f"You're subscribed — {SITE_NAME}", body, root, desc="Welcome to NewCo Brief. Your first Monday issue is on its way.")
+    return page(f"You're in — {SITE_NAME}", body, root, desc="Welcome to NewCo Brief. Your first issue arrives overnight; this week's entries are on the site now.")
 
 
 def privacy_page(root: str) -> str:
