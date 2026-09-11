@@ -24,7 +24,10 @@ HOME_DESCRIPTION = ("A weekly brief of newly formed Colorado businesses: the sta
                     "One city is free.")
 AUTHOR = "Kristina Nelson"
 CONTACT_EMAIL = "brief@newcobrief.com"     # forwards to kjoysky31@gmail.com via ImprovMX (MX + SPF at GoDaddy, 2026-09-10)
-PRICE_LINE = "Paid plans from $49/mo add the whole state and the whole office."
+BUY_URL = "https://buttondown.com/newcobrief/buy"   # Buttondown's hosted Stripe checkout for the Statewide plan
+PRICE_LINE = "Statewide is $49 a month for every city you choose. Firm plans cover the whole office."
+PRICE_HTML = (f'Statewide is <a href="{BUY_URL}">$49 a month</a> for every city you choose. '
+              f'<a href="{{root}}plans/">Firm plans</a> cover the whole office.')
 THIN_WEEK = 20
 # Public city pages show ONE trade in full (the lead trade, up to this many entries) and every other trade
 # as a count. Decided 2026-09-10 after reviewer feedback: the name lists let a broker prospect straight off
@@ -105,6 +108,9 @@ section.industry .kicker.also{color:var(--ink-3);border:0;margin:22px 0 4px;padd
 .prose{max-width:34em;font-size:18px;line-height:1.6}
 .prose h1{font-size:36px;margin:40px 0 8px}.prose h2{font-family:var(--serif);font-weight:600;letter-spacing:-.02em;font-size:24px;margin:36px 0 8px}
 .prose p{margin:12px 0 0}
+.plans .plan{border-top:1px solid var(--rule);padding:22px 0 26px;margin-top:28px}.plans .plan .kicker{margin:0 0 4px}
+.plans .price{font-family:var(--serif);font-weight:600;font-size:32px;letter-spacing:-.02em;margin:0}.plans .price span{font-family:var(--sans);font-stretch:87.5%;font-weight:550;font-size:14px;letter-spacing:0;color:var(--ink-2)}
+.plans a.cta{font-family:var(--sans);font-stretch:87.5%;font-weight:600}
 .sample-email{border:1px solid var(--rule);padding:8px 16px 0;margin:24px 0 0;overflow-x:auto}
 footer nav{margin:0 0 12px;display:flex;flex-wrap:wrap;gap:6px 16px;font-weight:600}
 footer nav a{color:var(--ink-2)}
@@ -194,14 +200,14 @@ def page(title: str, body: str, root: str, current: str = "", desc: str = DESCRI
 <nav class="cities" aria-label="Cities">{nav}</nav>
 <p class="week">Week of <b>{esc(WEEK["span"])}</b> · Refreshed nightly · Next email <b>Monday, {esc(WEEK["next_send"])}</b></p></header>
 {body}
-<footer><nav aria-label="About"><a href="{root}about/">About</a><a href="{root}sample/">Sample issue</a><a href="{root}privacy/">Privacy and terms</a><a href="mailto:{CONTACT_EMAIL}">Contact</a></nav>
+<footer><nav aria-label="About"><a href="{root}about/">About</a><a href="{root}plans/">Plans</a><a href="{root}sample/">Sample issue</a><a href="{root}privacy/">Privacy and terms</a><a href="mailto:{CONTACT_EMAIL}">Contact</a></nav>
 <p>{esc(DESCRIPTION)} Written and run by {esc(AUTHOR)}.</p>
 <p>Business records are published by the Colorado Secretary of State and are in the public domain. Industry and commentary are inferred from the business name by NewCo Brief and are labeled as inferred. City and ZIP only; no street addresses, owner names, or phone numbers are published. Entries are shown for 90 days. No export.</p>
 <p>&copy; {date.today().year} NewCo Brief</p></footer>
 </div></body></html>"""
 
 
-def signup_form(selected: str = "", top: bool = False, heading: str = "") -> str:
+def signup_form(selected: str = "", top: bool = False, heading: str = "", root: str = "../") -> str:
     """The email signup box. On city pages the city is a hidden field (they already chose it);
     on the home page it is a <select> defaulting to Denver."""
     if selected:
@@ -213,7 +219,7 @@ def signup_form(selected: str = "", top: bool = False, heading: str = "") -> str
         title = heading or "Get one city by email, free"
     uid = "top" if top else "signup"
     return f"""<h2 id="{uid}">{title}</h2>
-<p>Every Monday morning, every entry in full. No card. One city is always free. {esc(PRICE_LINE)}</p>
+<p>Every Monday morning, every entry in full. No card. One city is always free. {PRICE_HTML.format(root=root)}</p>
 <form class="signup{" top" if top else ""}" action="{SIGNUP_ACTION}" method="post">
 {city_field}
 <label for="email-{uid}">Email</label><div class="row"><input id="email-{uid}" name="email" type="email" required placeholder="you@agency.com">
@@ -304,7 +310,7 @@ def landing(sample: tuple, totals: dict, statewide: int, root: str) -> str:
 <p class="kicker" style="margin-top:26px">This week in our ten cities</p>
 <div class="figures" style="margin-top:8px"><div><b>{filed}</b><span>Filed</span></div><div><b>{filed - kept}</b><span>Cut</span></div><div><b class="kept">{kept}</b><span>Worth reading</span></div></div></div>
 <div class="transform"><p class="kicker">What the state records</p><div class="raw">{raw_row}</div><div class="join"><div class="arm"></div><p class="kicker">What we publish</p></div>{entry(r, c, r.get("principalcity", "")).replace('<article class="entry">', '<article class="entry" style="padding-top:18px">')}</div>
-{signup_form(top=True)}
+{signup_form(top=True, root=root)}
 <p class="alt sans" style="color:var(--ink-3);font-size:13px;margin:10px 0 0"><a href="{root}sample/">See a sample issue</a> · <a href="{root}denver/">See this week in Denver</a></p>
 <h2>Who it is for</h2>
 <p>Commercial insurance brokers. The entry above is the kind of account that has not chosen a broker yet, and it arrives here days after filing, before the company has a website or a listing.</p>
@@ -319,7 +325,7 @@ def landing(sample: tuple, totals: dict, statewide: int, root: str) -> str:
 def about_page(root: str) -> str:
     body = f"""<main class="prose">
 <h1>About NewCo Brief</h1>
-<p>NewCo Brief is a weekly brief of newly formed Colorado businesses, written for the people who sell to them. Every night it reads the Colorado Secretary of State's public list of new entities, removes holding companies, mailbox registrations, and names that say nothing, infers the trade from the name, and writes one line for a commercial insurance broker on each. The email goes out Monday morning. One city is free. {esc(PRICE_LINE)}</p>
+<p>NewCo Brief is a weekly brief of newly formed Colorado businesses, written for the people who sell to them. Every night it reads the Colorado Secretary of State's public list of new entities, removes holding companies, mailbox registrations, and names that say nothing, infers the trade from the name, and writes one line for a commercial insurance broker on each. The email goes out Monday morning. One city is free. {PRICE_HTML.format(root=root)}</p>
 <h2>Who makes it</h2>
 <p>NewCo Brief is written and run by {esc(AUTHOR)}. The filtering rules, the industry list, and the decisions about what to cut and what to publish are hers. Names are sorted against the industry list with the help of an AI model, and every inferred label is marked as inferred so you can judge it yourself. The state record is linked on every entry.</p>
 <h2>What we publish, and what we don't</h2>
@@ -328,6 +334,30 @@ def about_page(root: str) -> str:
 <p>Questions, corrections, or a request to remove an entry: <a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a>. Replies to the Monday email reach the same desk.</p>
 </main>"""
     return page(f"About — {SITE_NAME}", body, root, desc="Who makes NewCo Brief, what it publishes, and how to reach us.")
+
+
+def plans_page(root: str) -> str:
+    n = len(LAUNCH_CITIES)
+    body = f"""<main class="prose plans">
+<h1>Plans</h1>
+<p>Every plan is the same Monday email: newly formed Colorado businesses, filtered to real operating companies, tagged by trade, one line for a broker on each, every entry in full. Plans differ only in how many cities and how many people.</p>
+<div class="plan"><p class="kicker">Free</p><p class="price">$0</p>
+<p>One city of your choice, every Monday. Pick it at signup; change it any time from the link at the bottom of any issue.</p>
+<p><a href="{root}#top">Get one city free &rarr;</a></p></div>
+<div class="plan"><p class="kicker">Statewide</p><p class="price">$49 <span>a month, or $490 a year</span></p>
+<p>Every city you choose, as many as you like, from the {n} we cover. Add or drop cities yourself from the same link. Billed by Stripe; cancel any time.</p>
+<p><a class="cta" href="{BUY_URL}">Subscribe to Statewide &rarr;</a></p></div>
+<div class="plan"><p class="kicker">Firm</p><p class="price">$199 <span>a month for up to five people</span></p>
+<p>Statewide for the whole office: five addresses at one agency, each choosing their own cities. Larger offices, ask. Search across past issues is coming and will be added to Firm plans first.</p>
+<p><a class="cta" href="mailto:{CONTACT_EMAIL}?subject=Firm%20plan">Email to set up a Firm plan &rarr;</a> We set it up the same day.</p></div>
+<h2>Questions</h2>
+<p><b>Is there a trial?</b> The free city is the trial. It is the same email, the same week, in full.</p>
+<p><b>Can I pay yearly?</b> Yes. Statewide is $490 a year, two months free. Choose yearly at checkout.</p>
+<p><b>What about sales tax?</b> Stripe adds it at checkout where your state requires it, and the receipt shows it separately.</p>
+<p><b>How do I cancel?</b> From the link at the bottom of any issue. The plan runs to the end of the period you paid for.</p>
+<p>Anything else: <a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a>.</p>
+</main>"""
+    return page(f"Plans — {SITE_NAME}", body, root, desc=f"One city free. Statewide $49 a month for every city you choose. Firm plans for the whole office.")
 
 
 def privacy_page(root: str) -> str:
@@ -341,7 +371,7 @@ def privacy_page(root: str) -> str:
 <h2>The business data</h2>
 <p>Business records come from the Colorado Secretary of State and are in the public domain. Industry and commentary are inferred from the business name by NewCo Brief and are labeled as inferred; they can be wrong. We publish city and ZIP only, never street addresses, owner names, or phone numbers. If you own a business listed here and want the entry removed, email <a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a> and we will remove it.</p>
 <h2>Terms of use</h2>
-<p>The site and the free email are for your own professional use. You may not scrape, export, republish, or resell the lists. NewCo Brief is provided as is, with no warranty that any entry is accurate or complete; verify against the linked state record before you act on it. Paid plans will have their own terms at checkout.</p>
+<p>The site and the free email are for your own professional use. You may not scrape, export, republish, or resell the lists. NewCo Brief is provided as is, with no warranty that any entry is accurate or complete; verify against the linked state record before you act on it. Paid plans are billed by Stripe, monthly or yearly, with sales tax added where the law requires it; cancel any time from the link at the bottom of any issue and the plan ends at the close of the period already paid for. A Firm plan is for the named people at one office; sharing issues outside that office is not permitted.</p>
 <p>Questions: <a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a>.</p>
 </main>"""
     return page(f"Privacy and terms — {SITE_NAME}", body, root, desc="How NewCo Brief handles subscriber email addresses and public business data.")
@@ -386,7 +416,7 @@ def main() -> None:
         (out / "index.html").write_text(city_page(city, crows, filed, cache, "../"))
         kept = sum(1 for r in crows if worth_reading(cache.get(r["entityid"])))
         totals[city] = {"filed": filed, "cut": filed - kept, "kept": kept}
-    for name, fn in (("about", about_page), ("privacy", privacy_page)):
+    for name, fn in (("about", about_page), ("plans", plans_page), ("privacy", privacy_page)):
         (SITE_DIR / name).mkdir(exist_ok=True)
         (SITE_DIR / name / "index.html").write_text(fn("../"))
 
