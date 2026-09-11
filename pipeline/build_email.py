@@ -23,7 +23,13 @@ from config import (CLASSIFIED_FILE, DATA_DIR, FILTERED_DIR, INDUSTRIES, LAUNCH_
 
 EMAIL_DIR = DATA_DIR / "email"
 SITE_URL = "https://newcobrief.com"
-EMAIL_BUDGET = 90_000          # bytes of HTML body; Gmail clips at ~102 KB, leave room for Buttondown's wrapper
+EMAIL_BUDGET = 66_000          # bytes of HTML body. Gmail clips the HTML part at ~102 KB. Measured 2026-09-11 on the first
+                               # real send: Buttondown adds ~21 KB of wrapper/styles, and its "UTM information" setting added
+                               # ~117 bytes to each of the 108 links (12.6 KB); quoted-printable encoding adds ~6% on top.
+                               # A 88.7 KB body went out at 123 KB and Gmail clipped it. Every entry carries a link, so UTM
+                               # costs ~12.6 KB at any budget: 66 + 21 + 12.6 = 99.6 KB (~105 KB encoded) would still clip.
+                               # UTM information must stay OFF in Buttondown (Settings -> Tracking): 66 + 21 = 87 KB, ~92 KB
+                               # encoded. Click tracking was already off.
 
 # Colours from 04-Design-Decisions.pdf
 INK, INK2, INK3 = "#16241D", "#4A5A52", "#7B8A82"
