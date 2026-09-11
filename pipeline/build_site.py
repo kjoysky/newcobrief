@@ -25,6 +25,7 @@ HOME_DESCRIPTION = ("A weekly brief of newly formed Colorado businesses: the sta
 AUTHOR = "Kristina Nelson"
 CONTACT_EMAIL = "brief@newcobrief.com"     # forwards to kjoysky31@gmail.com via ImprovMX (MX + SPF at GoDaddy, 2026-09-10)
 BUY_URL = "https://buttondown.com/newcobrief/buy"   # Buttondown's hosted Stripe checkout for the Statewide plan
+FIRM_BUY_URL = BUY_URL + "?product_id=prod_VF6nXdrVgo1vFw"   # same, for the Firm product (Stripe product id; verified 2026-09-11)
 PRICE_LINE = "Statewide is $49 a month for every city you choose. Firm plans cover the whole office."
 PRICE_HTML = (f'Statewide is <a href="{BUY_URL}">$49 a month</a> for every city you choose. '
               f'<a href="{{root}}plans/">Firm plans</a> cover the whole office.')
@@ -348,8 +349,8 @@ def plans_page(root: str) -> str:
 <p>Every city you choose, as many as you like, from the {n} we cover. Add or drop cities yourself from the same link. Billed by Stripe; cancel any time.</p>
 <p><a class="cta" href="{BUY_URL}">Subscribe to Statewide &rarr;</a></p></div>
 <div class="plan"><p class="kicker">Firm</p><p class="price">$199 <span>a month for up to five people</span></p>
-<p>Statewide for the whole office: five addresses at one agency, each choosing their own cities. Larger offices, ask. Search across past issues is coming and will be added to Firm plans first.</p>
-<p><a class="cta" href="mailto:{CONTACT_EMAIL}?subject=Firm%20plan">Email to set up a Firm plan &rarr;</a> We set it up the same day.</p></div>
+<p>Statewide for the whole office: five addresses at one agency, each choosing their own cities. $1,990 a year at checkout. Larger offices, ask. Search across past issues is coming and will be added to Firm plans first.</p>
+<p><a class="cta" href="{FIRM_BUY_URL}">Subscribe to Firm &rarr;</a> After checkout, email the other four addresses to <a href="mailto:{CONTACT_EMAIL}?subject=Firm%20plan%20seats">{CONTACT_EMAIL}</a> and they are added the same day.</p></div>
 <h2>Questions</h2>
 <p><b>Is there a trial?</b> The free city is the trial. It is the same email, the same week, in full.</p>
 <p><b>Can I pay yearly?</b> Yes. Statewide is $490 a year, two months free. Choose yearly at checkout.</p>
