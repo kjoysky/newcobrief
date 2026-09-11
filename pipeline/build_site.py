@@ -361,6 +361,27 @@ def plans_page(root: str) -> str:
     return page(f"Plans — {SITE_NAME}", body, root, desc=f"One city free. Statewide $49 a month for every city you choose. Firm plans for the whole office.")
 
 
+def check_email_page(root: str) -> str:
+    """Where Buttondown sends people right after the signup form (subscription_redirect_url)."""
+    body = f"""<main class="prose">
+<h1>One more step: check your email</h1>
+<p>We just sent a confirmation link to the address you entered. Click it and you're on the list. If it isn't there in a minute or two, look in spam or promotions and move it to your inbox so Monday's brief lands where you'll see it.</p>
+<p>The first issue arrives <b>Monday, {esc(WEEK["next_send"])}</b>. Until then, the current week is on the site: <a href="{root}">pick a city</a>.</p>
+</main>"""
+    return page(f"Check your email — {SITE_NAME}", body, root, desc="Confirm your NewCo Brief subscription from the email we just sent.")
+
+
+def welcome_page(root: str) -> str:
+    """Where Buttondown sends people after they click the confirmation link (subscription_confirmation_redirect_url)."""
+    body = f"""<main class="prose">
+<h1>You're subscribed</h1>
+<p>Your city's brief arrives every Monday morning from <b>brief@newcobrief.com</b>. The first one comes <b>Monday, {esc(WEEK["next_send"])}</b>. Reply to any issue and it reaches {esc(AUTHOR)} directly.</p>
+<p>Want every city, not just one? <a href="{root}plans/">Statewide is $49 a month</a>, and you can add it any time from the link at the bottom of an issue. No rush.</p>
+<p>In the meantime, this week's entries are already on the site: <a href="{root}">pick a city</a>.</p>
+</main>"""
+    return page(f"You're subscribed — {SITE_NAME}", body, root, desc="Welcome to NewCo Brief. Your first Monday issue is on its way.")
+
+
 def privacy_page(root: str) -> str:
     body = f"""<main class="prose">
 <h1>Privacy and terms</h1>
@@ -417,7 +438,7 @@ def main() -> None:
         (out / "index.html").write_text(city_page(city, crows, filed, cache, "../"))
         kept = sum(1 for r in crows if worth_reading(cache.get(r["entityid"])))
         totals[city] = {"filed": filed, "cut": filed - kept, "kept": kept}
-    for name, fn in (("about", about_page), ("plans", plans_page), ("privacy", privacy_page)):
+    for name, fn in (("about", about_page), ("plans", plans_page), ("privacy", privacy_page), ("check-email", check_email_page), ("welcome", welcome_page)):
         (SITE_DIR / name).mkdir(exist_ok=True)
         (SITE_DIR / name / "index.html").write_text(fn("../"))
 
