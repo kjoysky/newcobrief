@@ -12,7 +12,7 @@ Four steps, each its own script, all in this folder:
 
 | 6 | build_email.py | Builds the Monday email for each city into data/email/ (open a .html there to preview). Same data as the city pages, one column, tables and inline styles so Gmail and Outlook agree. Long weeks show the first entries in full and the rest as one-liners, to stay under Gmail's 102 KB clip | No |
 | 7 | send_email.py | Pushes the emails to Buttondown, one per city, to subscribers tagged with that city. Creates DRAFTS unless run with `--send` | No (needs the Buttondown key) |
-| 8 | first_issue.py | Nightly. Sends this week's issue to anyone who subscribed since the last run, so they don't wait for Monday. Keeps one standing draft per city in Buttondown (refreshed nightly, never published) and sends it to just the new subscribers. Skips Mondays. Records who got it in data/first-issue.json. `--dry-run` lists, `--to you@x.com` sends a test to one address | No (needs the Buttondown key) |
+| 8 | first_issue.py | Nightly. Sends this week's issue, with a welcome block on top, to anyone who subscribed since the last run, so they don't wait for Monday. Tags them `first-issue`, sends one real email per city to "city tag AND first-issue", and strips the tag on the next run (Buttondown's draft-preview send would stamp [PREVIEW] on the subject, so it is a real send). Skips Mondays. Records who got it in data/first-issue.json. `--dry-run` lists, `--to you@x.com` sends a test to one address | No (needs the Buttondown key) |
 
 run.py runs steps 1 to 6 in order. The nightly workflow then runs step 8. Step 7 runs on Mondays (see below).
 
