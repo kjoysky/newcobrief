@@ -64,6 +64,9 @@ section.industry .kicker.also{color:var(--ink-3);border:0;margin:22px 0 4px;padd
 .prose{max-width:34em;font-size:18px;line-height:1.6}
 .prose h1{font-size:36px;margin:40px 0 8px}.prose h2{font-family:var(--serif);font-weight:600;letter-spacing:-.02em;font-size:24px;margin:36px 0 8px}
 .prose p{margin:12px 0 0}
+.plans .plan{border-top:1px solid var(--rule);padding:22px 0 26px;margin-top:28px}.plans .plan .kicker{margin:0 0 4px}
+.plans .price{font-family:var(--serif);font-weight:600;font-size:32px;letter-spacing:-.02em;margin:0}.plans .price span{font-family:var(--sans);font-stretch:87.5%;font-weight:550;font-size:14px;letter-spacing:0;color:var(--ink-2)}
+.plans a.cta{font-family:var(--sans);font-stretch:87.5%;font-weight:600}
 .sample-email{border:1px solid var(--rule);padding:8px 16px 0;margin:24px 0 0;overflow-x:auto}
 footer nav{margin:0 0 12px;display:flex;flex-wrap:wrap;gap:6px 16px;font-weight:600}
 footer nav a{color:var(--ink-2)}
