@@ -11919,5 +11919,1223 @@
   "operating": true,
   "confidence": "low",
   "note": ""
+ },
+ "20268141420": {
+  "industry": "Health and medical",
+  "detail": "holistic wellness services",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Wellness and alternative care practices typically need professional liability and general liability coverage in place before seeing their first clients."
+ },
+ "20268141405": {
+  "industry": "Home and property services",
+  "detail": "cleaning services",
+  "operating": true,
+  "confidence": "high",
+  "note": "Cleaning operations usually need general liability, janitorial bonds, and workers' comp as soon as crews enter client premises."
+ },
+ "20268141380": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268141378": {
+  "industry": "Home and property services",
+  "detail": "home repair and maintenance",
+  "operating": true,
+  "confidence": "high",
+  "note": "Handyman and repair outfits typically need general liability, tools and equipment coverage, and commercial auto once they begin taking jobs."
+ },
+ "20268141363": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268141334": {
+  "industry": "Construction and trades",
+  "detail": "demolition contracting",
+  "operating": true,
+  "confidence": "high",
+  "note": "Demolition contractors need high-limit general liability, pollution coverage, and workers' comp before mobilizing on any site."
+ },
+ "20268141333": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268141320": {
+  "industry": "Transportation and logistics",
+  "detail": "moving services",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Movers typically need commercial auto, cargo, and workers' comp coverage before the first load is booked."
+ },
+ "20268141300": {
+  "industry": "Transportation and logistics",
+  "detail": "trucking or transport",
+  "operating": true,
+  "confidence": "high",
+  "note": "Transport companies generally need commercial auto liability, cargo coverage, and filings in place before operating vehicles."
+ },
+ "20268141298": {
+  "industry": "Transportation and logistics",
+  "detail": "freight logistics",
+  "operating": true,
+  "confidence": "high",
+  "note": "Logistics firms commonly need contingent cargo, broker liability, and auto coverage as soon as they arrange or move freight."
+ },
+ "20268141273": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268141262": {
+  "industry": "Professional services",
+  "detail": "HR consulting",
+  "operating": true,
+  "confidence": "high",
+  "note": "HR advisory consultancies typically need professional liability and cyber coverage before handling client employee data."
+ },
+ "20268141236": {
+  "industry": "Arts, media and entertainment",
+  "detail": "media production",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Production companies usually need equipment coverage, general liability, and short-term production policies before each shoot."
+ },
+ "20268141218": {
+  "industry": "Construction and trades",
+  "detail": "EV charger installation",
+  "operating": true,
+  "confidence": "low",
+  "note": "Electrical installation businesses typically need general liability, tools coverage, and workers' comp before starting installations."
+ },
+ "20268141207": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268141206": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268141201": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268141188": {
+  "industry": "Arts, media and entertainment",
+  "detail": "media production company",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Media companies typically need media liability, equipment coverage, and general liability as projects begin."
+ },
+ "20268141183": {
+  "industry": "Construction and trades",
+  "detail": "flooring installation",
+  "operating": true,
+  "confidence": "high",
+  "note": "Flooring contractors generally need general liability, installation floater, and commercial auto coverage once jobs are scheduled."
+ },
+ "20268141158": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268141151": {
+  "industry": "Hospitality, travel and events",
+  "detail": "hospitality consulting",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Hospitality service firms commonly need general and professional liability coverage before working on client properties."
+ },
+ "20268141148": {
+  "industry": "Real estate and property",
+  "detail": "land acquisition services",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Real estate services businesses typically need errors and omissions plus general liability coverage as soon as they represent clients."
+ },
+ "20268141128": {
+  "industry": "Beauty and personal care",
+  "detail": "beauty services or products",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Beauty businesses usually need professional liability, general liability, and product coverage before serving the public."
+ },
+ "20268141108": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268141080": {
+  "industry": "Nonprofit and community",
+  "detail": "nonprofit network",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Nonprofits typically need directors and officers coverage, general liability, and event coverage soon after formation."
+ },
+ "20268141059": {
+  "industry": "Restaurants and food",
+  "detail": "dessert bakery",
+  "operating": true,
+  "confidence": "high",
+  "note": "Food producers generally need product liability, general liability, and equipment coverage before selling to the public."
+ },
+ "20268141055": {
+  "industry": "Other",
+  "detail": "laundry or juice services",
+  "operating": true,
+  "confidence": "low",
+  "note": "Small service businesses typically need general liability and property coverage once they open to customers."
+ },
+ "20268141048": {
+  "industry": "Transportation and logistics",
+  "detail": "moving services",
+  "operating": true,
+  "confidence": "high",
+  "note": "Moving companies need commercial auto, cargo, and workers' comp coverage before handling customer household goods."
+ },
+ "20268141041": {
+  "industry": "Technology and software",
+  "detail": "technology services",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Technology firms typically need cyber liability and tech errors and omissions coverage before signing client contracts."
+ },
+ "20268141020": {
+  "industry": "Health and medical",
+  "detail": "anesthesia practice",
+  "operating": true,
+  "confidence": "high",
+  "note": "Medical practices require malpractice coverage and general liability in force before treating any patients."
+ },
+ "20268141006": {
+  "industry": "Restaurants and food",
+  "detail": "baking business",
+  "operating": true,
+  "confidence": "high",
+  "note": "Bakeries typically need product liability, property, and equipment coverage before beginning production or sales."
+ },
+ "20268140913": {
+  "industry": "Home and property services",
+  "detail": "cleanup or junk removal",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Cleanup and hauling operations usually need general liability, commercial auto, and workers' comp once crews start jobs."
+ },
+ "20268140905": {
+  "industry": "Technology and software",
+  "detail": "IT services",
+  "operating": true,
+  "confidence": "low",
+  "note": "IT service providers typically need cyber and tech errors and omissions coverage before taking on client systems."
+ },
+ "20268140902": {
+  "industry": "Home and property services",
+  "detail": "junk removal",
+  "operating": true,
+  "confidence": "high",
+  "note": "Junk removal businesses need commercial auto, general liability, and workers' comp coverage as soon as hauling begins."
+ },
+ "20268140898": {
+  "industry": "Retail",
+  "detail": "apparel brand",
+  "operating": true,
+  "confidence": "high",
+  "note": "Clothing sellers typically need product liability, inventory coverage, and general liability before launching sales."
+ },
+ "20268140891": {
+  "industry": "Professional services",
+  "detail": "business consulting",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Consultants generally need professional liability and general liability coverage before delivering client engagements."
+ },
+ "20268140888": {
+  "industry": "Professional services",
+  "detail": "spiritual direction counseling",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Counseling-style practices typically need professional liability and general liability coverage before meeting with clients."
+ },
+ "20268140868": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268140859": {
+  "industry": "Health and medical",
+  "detail": "mental health counseling",
+  "operating": true,
+  "confidence": "high",
+  "note": "Counseling practices need professional liability and cyber coverage for client records before opening their caseload."
+ },
+ "20268140854": {
+  "industry": "Health and medical",
+  "detail": "anesthesia practice",
+  "operating": true,
+  "confidence": "high",
+  "note": "Anesthesia providers require malpractice coverage in force before any clinical work begins."
+ },
+ "20268140849": {
+  "industry": "Health and medical",
+  "detail": "orthopedic medical practice",
+  "operating": true,
+  "confidence": "high",
+  "note": "A specialty medical practice typically needs professional liability, general liability, and coverage for equipment and patient records before seeing its first patients."
+ },
+ "20268140811": {
+  "industry": "Home and property services",
+  "detail": "handyman services",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Handyman operations usually need general liability, tools and equipment coverage, and commercial auto once they begin taking jobs."
+ },
+ "20268140750": {
+  "industry": "Technology and software",
+  "detail": "technology products",
+  "operating": true,
+  "confidence": "low",
+  "note": "Technology ventures generally look for tech errors and omissions, cyber liability, and property coverage for equipment as soon as they take on clients."
+ },
+ "20268140748": {
+  "industry": "Home and property services",
+  "detail": "cleaning services",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Cleaning businesses typically need general liability, janitorial bonds, and workers' compensation once staff are hired."
+ },
+ "20268140746": {
+  "industry": "Retail",
+  "detail": "ritual and wellness goods",
+  "operating": true,
+  "confidence": "low",
+  "note": "Small retail or artisan sellers usually need product liability, inventory coverage, and general liability before opening sales channels."
+ },
+ "20268140740": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268140732": {
+  "industry": "Beauty and personal care",
+  "detail": "beauty services or products",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Beauty businesses commonly need professional liability for treatments, general liability, and product coverage once they begin serving clients."
+ },
+ "20268140715": {
+  "industry": "Home and property services",
+  "detail": "window cleaning",
+  "operating": true,
+  "confidence": "high",
+  "note": "Window cleaning contractors need general liability, height-related workers' compensation, and commercial auto from the first job."
+ },
+ "20268140711": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268140679": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268140667": {
+  "industry": "Professional services",
+  "detail": "law practice",
+  "operating": true,
+  "confidence": "high",
+  "note": "Law firms typically need professional liability, cyber coverage for client data, and a business owners policy when the office opens."
+ },
+ "20268140619": {
+  "industry": "Construction and trades",
+  "detail": "general construction",
+  "operating": true,
+  "confidence": "high",
+  "note": "Construction firms need general liability, workers' compensation, commercial auto, and tools coverage before bidding or starting work."
+ },
+ "20268140611": {
+  "industry": "Construction and trades",
+  "detail": "insulation contracting",
+  "operating": true,
+  "confidence": "high",
+  "note": "Insulation contractors usually need general liability, workers' compensation, and contractor's equipment coverage, often with certificates required by general contractors."
+ },
+ "20268140590": {
+  "industry": "Health and medical",
+  "detail": "senior living placement advising",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Advisory services in senior care typically need professional liability, general liability, and cyber coverage for sensitive client information."
+ },
+ "20268140487": {
+  "industry": "Agriculture and animals",
+  "detail": "veterinary services",
+  "operating": true,
+  "confidence": "high",
+  "note": "Veterinary practices need professional liability, animal bailee coverage, general liability, and equipment protection once they begin treating animals."
+ },
+ "20268140471": {
+  "industry": "Professional services",
+  "detail": "appraisal and valuation",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Valuation and appraisal firms rely on professional liability and cyber coverage as soon as they issue reports to clients."
+ },
+ "20268140447": {
+  "industry": "Manufacturing",
+  "detail": "security product manufacturing",
+  "operating": true,
+  "confidence": "high",
+  "note": "Manufacturers and distributors typically need product liability, property and inventory coverage, and cargo or transit protection as production begins."
+ },
+ "20268140408": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268140405": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268140386": {
+  "industry": "Beauty and personal care",
+  "detail": "beauty services",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Beauty service providers usually need professional and general liability plus coverage for products and equipment when they start booking clients."
+ },
+ "20268140354": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268140331": {
+  "industry": "Arts, media and entertainment",
+  "detail": "book publishing",
+  "operating": true,
+  "confidence": "high",
+  "note": "Publishers typically need media liability for copyright and defamation exposure along with general liability and inventory coverage."
+ },
+ "20268140310": {
+  "industry": "Home and property services",
+  "detail": "home services or goods",
+  "operating": true,
+  "confidence": "low",
+  "note": "Home-focused service businesses generally need general liability, commercial auto, and equipment coverage once work begins in customer homes."
+ },
+ "20268140306": {
+  "industry": "Home and property services",
+  "detail": "gardening and landscaping",
+  "operating": true,
+  "confidence": "high",
+  "note": "Gardening and landscaping outfits need general liability, equipment coverage, and commercial auto, usually with seasonal staffing workers' compensation."
+ },
+ "20268140266": {
+  "industry": "Fitness, sports and recreation",
+  "detail": "petanque sports club",
+  "operating": true,
+  "confidence": "high",
+  "note": "Recreational clubs typically need general liability for events and participants, plus directors and officers coverage for the nonprofit board."
+ },
+ "20268140262": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268140259": {
+  "industry": "Beauty and personal care",
+  "detail": "mobile aesthetics services",
+  "operating": true,
+  "confidence": "high",
+  "note": "Mobile aesthetics providers need professional liability for treatments, general liability, and commercial auto covering equipment in transit."
+ },
+ "20268140253": {
+  "industry": "Retail",
+  "detail": "trading card sales",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Collectibles sellers typically need inventory and stock coverage, general liability, and protection for goods at shows or in shipment."
+ },
+ "20268140231": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268140223": {
+  "industry": "Professional services",
+  "detail": "concierge services",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Concierge service firms usually need general liability, care-custody-and-control coverage for client property, and commercial auto."
+ },
+ "20268140206": {
+  "industry": "Construction and trades",
+  "detail": "painting contractor",
+  "operating": true,
+  "confidence": "high",
+  "note": "Painting contractors need general liability, workers' compensation, and commercial auto, and often must show certificates before starting projects."
+ },
+ "20268140202": {
+  "industry": "Beauty and personal care",
+  "detail": "barbershop",
+  "operating": true,
+  "confidence": "high",
+  "note": "Barbershops typically need general and professional liability, property coverage for the shop, and workers' compensation for employed staff."
+ },
+ "20268140199": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268140184": {
+  "industry": "Home and property services",
+  "detail": "handyman services",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Handyman businesses commonly need general liability, tool coverage, and commercial auto once they start taking on customer jobs."
+ },
+ "20268140183": {
+  "industry": "Finance and insurance",
+  "detail": "bookkeeping and tax prep",
+  "operating": true,
+  "confidence": "high",
+  "note": "Bookkeeping and tax firms need professional liability and cyber coverage for client financial data, typically before tax season work begins."
+ },
+ "20268140154": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268140108": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268140107": {
+  "industry": "Nonprofit and community",
+  "detail": "social development programs",
+  "operating": true,
+  "confidence": "low",
+  "note": "Community-focused organizations typically need general liability, directors and officers coverage, and abuse and molestation protection if serving vulnerable groups."
+ },
+ "20268140093": {
+  "industry": "Technology and software",
+  "detail": "AI design software",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Software ventures usually need technology errors and omissions, cyber liability, and general liability once they take on customers."
+ },
+ "20268140070": {
+  "industry": "Construction and trades",
+  "detail": "general contracting",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Building contractors need general liability, workers' compensation, and builder's risk coverage before starting projects."
+ },
+ "20268140043": {
+  "industry": "Professional services",
+  "detail": "consulting services",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Consulting practices typically need professional liability and general liability coverage, often purchased as soon as client contracts require proof of insurance."
+ },
+ "20268140026": {
+  "industry": "Transportation and logistics",
+  "detail": "passenger rides or transport",
+  "operating": true,
+  "confidence": "low",
+  "note": "Transport operations usually need commercial auto liability, passenger liability, and workers' compensation before vehicles hit the road."
+ },
+ "20268140000": {
+  "industry": "Transportation and logistics",
+  "detail": "trucking",
+  "operating": true,
+  "confidence": "high",
+  "note": "Trucking companies need commercial auto liability, cargo coverage, and often filings with authorities before hauling begins."
+ },
+ "20268139997": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268139989": {
+  "industry": "Construction and trades",
+  "detail": "general construction services",
+  "operating": true,
+  "confidence": "high",
+  "note": "Contractors typically need general liability, tools and equipment coverage, and workers' compensation before the first job site."
+ },
+ "20268139972": {
+  "industry": "Agriculture and animals",
+  "detail": "hemp products",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Hemp-related ventures often need product liability, crop or inventory coverage, and carriers willing to write the class."
+ },
+ "20268139904": {
+  "industry": "Construction and trades",
+  "detail": "electrical contracting",
+  "operating": true,
+  "confidence": "high",
+  "note": "Electrical contractors need general liability, tools coverage, and workers' compensation, usually required at license renewal or bid time."
+ },
+ "20268139867": {
+  "industry": "Education and childcare",
+  "detail": "learning and tutoring services",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Education providers typically need general liability, professional liability, and abuse coverage before enrolling students."
+ },
+ "20268139853": {
+  "industry": "Arts, media and entertainment",
+  "detail": "artwork sales",
+  "operating": true,
+  "confidence": "high",
+  "note": "Artists typically need coverage for studio contents, inventory in transit to shows, and liability at exhibitions."
+ },
+ "20268139846": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268139830": {
+  "industry": "Real estate and property",
+  "detail": "residential real estate",
+  "operating": true,
+  "confidence": "low",
+  "note": "Residential property ventures often need property coverage, general liability, and builder's risk if construction is involved."
+ },
+ "20268139795": {
+  "industry": "Construction and trades",
+  "detail": "framing contractor",
+  "operating": true,
+  "confidence": "high",
+  "note": "Framing contractors carry higher-hazard workers' compensation exposure and need general liability plus tools coverage before job sites open."
+ },
+ "20268139754": {
+  "industry": "Real estate and property",
+  "detail": "home inspections",
+  "operating": true,
+  "confidence": "high",
+  "note": "Home inspectors need errors and omissions coverage alongside general liability, typically required by the state or referring agents."
+ },
+ "20268139747": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268139738": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268139724": {
+  "industry": "Health and medical",
+  "detail": "sober living residence",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Recovery residences need general and professional liability, abuse and molestation coverage, and property insurance on the housing."
+ },
+ "20268139717": {
+  "industry": "Restaurants and food",
+  "detail": "sourdough bakery",
+  "operating": true,
+  "confidence": "high",
+  "note": "Bakeries need product liability, property and equipment coverage, and spoilage protection once production starts."
+ },
+ "20268139713": {
+  "industry": "Transportation and logistics",
+  "detail": "freight logistics",
+  "operating": true,
+  "confidence": "high",
+  "note": "Logistics firms typically need contingent cargo, commercial auto, and general liability before booking loads."
+ },
+ "20268139700": {
+  "industry": "Construction and trades",
+  "detail": "window installation",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Window installers need general liability, installation floater coverage, and workers' compensation for crews working at heights."
+ },
+ "20268139693": {
+  "industry": "Fitness, sports and recreation",
+  "detail": "outdoor recreation goods or trips",
+  "operating": true,
+  "confidence": "low",
+  "note": "Outdoor recreation ventures typically need general liability with participant coverage and equipment protection ahead of the season."
+ },
+ "20268139688": {
+  "industry": "Transportation and logistics",
+  "detail": "delivery service",
+  "operating": true,
+  "confidence": "high",
+  "note": "Delivery operations need commercial auto liability, hired and non-owned auto, and workers' compensation for drivers."
+ },
+ "20268139675": {
+  "industry": "Professional services",
+  "detail": "licensing services",
+  "operating": true,
+  "confidence": "low",
+  "note": "Service firms handling licensing work typically need professional liability and general liability once client agreements begin."
+ },
+ "20268139670": {
+  "industry": "Retail",
+  "detail": "novelty or anime retail",
+  "operating": true,
+  "confidence": "low",
+  "note": "Retailers need property coverage on inventory and fixtures plus general liability, usually effective at lease signing."
+ },
+ "20268139663": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268139621": {
+  "industry": "Hospitality, travel and events",
+  "detail": "college campus tours",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Tour operators need general liability, travel and participant coverage, and auto liability if they transport guests."
+ },
+ "20268139554": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268139523": {
+  "industry": "Construction and trades",
+  "detail": "painting contractor",
+  "operating": true,
+  "confidence": "high",
+  "note": "Painting contractors need general liability, workers' compensation, and coverage for ladders and sprayers before starting jobs."
+ },
+ "20268139515": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268139504": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268139492": {
+  "industry": "Finance and insurance",
+  "detail": "investment capital",
+  "operating": false,
+  "confidence": "medium",
+  "note": ""
+ },
+ "20268139483": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268139435": {
+  "industry": "Nonprofit and community",
+  "detail": "charitable foundation",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Nonprofits typically need directors and officers liability, general liability, and event coverage as programs and fundraisers ramp up."
+ },
+ "20268139432": {
+  "industry": "Finance and insurance",
+  "detail": "insurance agency",
+  "operating": true,
+  "confidence": "high",
+  "note": "Insurance agencies need errors and omissions coverage, cyber liability for client data, and a business owners policy for the office."
+ },
+ "20268139399": {
+  "industry": "Arts, media and entertainment",
+  "detail": "media production",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Media firms need media liability, equipment coverage, and general liability for shoots on location."
+ },
+ "20268139378": {
+  "industry": "Arts, media and entertainment",
+  "detail": "book publishing",
+  "operating": true,
+  "confidence": "high",
+  "note": "Publishers need media liability for copyright and defamation claims plus coverage for inventory and office contents."
+ },
+ "20268139373": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268139365": {
+  "industry": "Real estate and property",
+  "detail": "production yard property",
+  "operating": false,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268139341": {
+  "industry": "Transportation and logistics",
+  "detail": "trucking and transport",
+  "operating": true,
+  "confidence": "high",
+  "note": "Transport companies need commercial auto liability, cargo coverage, and workers' compensation for drivers from day one."
+ },
+ "20268139330": {
+  "industry": "Automotive",
+  "detail": "auto repair shop",
+  "operating": true,
+  "confidence": "high",
+  "note": "Repair shops need garage liability, garagekeepers coverage for customer vehicles, and property coverage on tools and lifts."
+ },
+ "20268139325": {
+  "industry": "Beauty and personal care",
+  "detail": "beauty salon studio",
+  "operating": true,
+  "confidence": "high",
+  "note": "Salon studios need professional liability for services, general liability, and property coverage on equipment once the space opens."
+ },
+ "20268139305": {
+  "industry": "Construction and trades",
+  "detail": "general construction contracting",
+  "operating": true,
+  "confidence": "high",
+  "note": "Contractors typically need general liability, tools and equipment coverage, and workers' compensation before the first job site, plus certificates of insurance for clients."
+ },
+ "20268139304": {
+  "industry": "Real estate and property",
+  "detail": "property holding entity",
+  "operating": false,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268139298": {
+  "industry": "Finance and insurance",
+  "detail": "private lending",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Lending entities generally carry professional liability, errors and omissions, and cyber coverage once they begin originating or servicing loans."
+ },
+ "20268139297": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268139253": {
+  "industry": "Health and medical",
+  "detail": "community care services",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Care providers usually need professional liability, abuse and molestation coverage, and workers' compensation before accepting their first clients."
+ },
+ "20268139208": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268139192": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": false,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268139181": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": false,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268139175": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268139161": {
+  "industry": "Restaurants and food",
+  "detail": "taco eatery or studio",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Food service operations typically need general liability, product liability, property coverage for equipment, and workers' compensation once they begin serving customers."
+ },
+ "20268139145": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268139143": {
+  "industry": "Professional services",
+  "detail": "personal or business coaching",
+  "operating": true,
+  "confidence": "high",
+  "note": "Coaching practices generally carry professional liability and general liability, with cyber coverage if they store client information online."
+ },
+ "20268139140": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268139115": {
+  "industry": "Professional services",
+  "detail": "business consulting",
+  "operating": true,
+  "confidence": "high",
+  "note": "Consultancies typically need errors and omissions coverage plus general liability, often required by contract before engagements begin."
+ },
+ "20268139110": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268139102": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268139089": {
+  "industry": "Arts, media and entertainment",
+  "detail": "video and film production",
+  "operating": true,
+  "confidence": "high",
+  "note": "Production companies commonly need equipment coverage, general liability for shoot locations, and short-term certificates required by venues and clients."
+ },
+ "20268139066": {
+  "industry": "Home and property services",
+  "detail": "residential home services",
+  "operating": true,
+  "confidence": "high",
+  "note": "Home service businesses typically need general liability, commercial auto for service vehicles, and workers' compensation as crews are hired."
+ },
+ "20268139021": {
+  "industry": "Beauty and personal care",
+  "detail": "nail salon",
+  "operating": true,
+  "confidence": "high",
+  "note": "Salons generally need general and professional liability for treatment claims, plus property coverage for build-out and equipment before opening day."
+ },
+ "20268139004": {
+  "industry": "Professional services",
+  "detail": "marketing agency",
+  "operating": true,
+  "confidence": "high",
+  "note": "Marketing agencies usually carry professional liability including advertising injury and media coverage, along with cyber liability for client data."
+ },
+ "20268138982": {
+  "industry": "Beauty and personal care",
+  "detail": "beauty services booking",
+  "operating": true,
+  "confidence": "low",
+  "note": "Personal care businesses typically need professional and general liability, plus property coverage for equipment at the studio or suite."
+ },
+ "20268138975": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268138945": {
+  "industry": "Home and property services",
+  "detail": "gardening and landscaping",
+  "operating": true,
+  "confidence": "low",
+  "note": "Landscaping and grounds businesses typically need general liability, equipment coverage, and commercial auto once seasonal work ramps up."
+ },
+ "20268138932": {
+  "industry": "Real estate and property",
+  "detail": "single property holding",
+  "operating": false,
+  "confidence": "medium",
+  "note": ""
+ },
+ "20268138904": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": false,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268138903": {
+  "industry": "Restaurants and food",
+  "detail": "bakery",
+  "operating": true,
+  "confidence": "high",
+  "note": "Bakeries generally need product liability, property coverage for ovens and equipment, and workers' compensation before opening."
+ },
+ "20268138899": {
+  "industry": "Education and childcare",
+  "detail": "apprenticeship training programs",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Training programs usually need general liability, professional liability, and workers' compensation, particularly where hands-on instruction is involved."
+ },
+ "20268138865": {
+  "industry": "Retail",
+  "detail": "import and export trading",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Trading companies typically need cargo and marine coverage, product liability, and warehouse property insurance as shipments begin."
+ },
+ "20268138812": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268138806": {
+  "industry": "Technology and software",
+  "detail": "software development",
+  "operating": true,
+  "confidence": "high",
+  "note": "Tech firms commonly need technology errors and omissions plus cyber liability, often demanded by customers at contract signing."
+ },
+ "20268138749": {
+  "industry": "Professional services",
+  "detail": "notary services",
+  "operating": true,
+  "confidence": "high",
+  "note": "Notary and signing agents generally carry errors and omissions coverage and general liability, plus commercial auto if traveling to clients."
+ },
+ "20268138748": {
+  "industry": "Transportation and logistics",
+  "detail": "trucking or freight hauling",
+  "operating": true,
+  "confidence": "high",
+  "note": "Trucking operations need commercial auto liability, cargo coverage, and often filings with authorities before hauling their first load."
+ },
+ "20268138733": {
+  "industry": "Health and medical",
+  "detail": "preventive health services",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Health service providers typically need medical professional liability and general liability, along with cyber coverage for patient records."
+ },
+ "20268138722": {
+  "industry": "Technology and software",
+  "detail": "e-commerce technology",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Technology and e-commerce ventures usually need cyber liability, tech errors and omissions, and product liability if goods are sold."
+ },
+ "20268138719": {
+  "industry": "Professional services",
+  "detail": "consulting services",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Consulting firms generally carry professional liability and general liability, frequently required before signing client contracts."
+ },
+ "20268138697": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268138685": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268138671": {
+  "industry": "Technology and software",
+  "detail": "technology services",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Technology service providers typically need cyber liability and tech errors and omissions coverage as client contracts start."
+ },
+ "20268138630": {
+  "industry": "Construction and trades",
+  "detail": "garage door installation",
+  "operating": true,
+  "confidence": "high",
+  "note": "Installation trades need general liability, commercial auto for service trucks, and workers' compensation, with certificates often required by builders."
+ },
+ "20268138618": {
+  "industry": "Professional services",
+  "detail": "private investigation",
+  "operating": true,
+  "confidence": "high",
+  "note": "Investigative firms typically need professional liability covering invasion of privacy claims, general liability, and commercial auto for surveillance work."
+ },
+ "20268138577": {
+  "industry": "Technology and software",
+  "detail": "interactive media or apps",
+  "operating": true,
+  "confidence": "low",
+  "note": "Interactive media and software startups typically need tech errors and omissions, cyber liability, and general liability once they sign client or investor contracts."
+ },
+ "20268138501": {
+  "industry": "Restaurants and food",
+  "detail": "home-style food kitchen",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Food preparation businesses generally need general liability with product liability, equipment coverage, and workers' compensation once staff are hired."
+ },
+ "20268138466": {
+  "industry": "Manufacturing",
+  "detail": "precision machining shop",
+  "operating": true,
+  "confidence": "high",
+  "note": "A machine shop usually needs general and product liability, equipment breakdown, property coverage on tooling, and workers' compensation from the first hire."
+ },
+ "20268138451": {
+  "industry": "Transportation and logistics",
+  "detail": "freight hauling or brokerage",
+  "operating": true,
+  "confidence": "high",
+  "note": "Freight operations typically need auto liability, motor truck cargo, and contingent cargo or broker liability before the first load moves."
+ },
+ "20268138429": {
+  "industry": "Education and childcare",
+  "detail": "learning and tutoring services",
+  "operating": true,
+  "confidence": "medium",
+  "note": "Education and tutoring providers typically need general liability, professional liability, and abuse coverage when working with minors."
+ },
+ "20268138422": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": false,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268138380": {
+  "industry": "Retail",
+  "detail": "general goods trading",
+  "operating": true,
+  "confidence": "low",
+  "note": "Trading and resale operations generally need product liability, inventory and transit coverage, and general liability as orders begin."
+ },
+ "20268138348": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268138338": {
+  "industry": "Professional services",
+  "detail": "resume or career coaching",
+  "operating": true,
+  "confidence": "low",
+  "note": "Consulting and coaching firms typically need professional liability and general liability once client engagements start."
+ },
+ "20268138337": {
+  "industry": "Construction and trades",
+  "detail": "stone and masonry work",
+  "operating": true,
+  "confidence": "high",
+  "note": "Stonework contractors normally need general liability, tools and equipment coverage, commercial auto, and workers' compensation before job sites open."
+ },
+ "20268138223": {
+  "industry": "Technology and software",
+  "detail": "technology services",
+  "operating": true,
+  "confidence": "low",
+  "note": "Technology firms commonly carry cyber liability and tech errors and omissions, often required by customer contracts."
+ },
+ "20268138220": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268138218": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
+ },
+ "20268138197": {
+  "industry": "Not inferable",
+  "detail": "",
+  "operating": true,
+  "confidence": "low",
+  "note": ""
  }
 }
