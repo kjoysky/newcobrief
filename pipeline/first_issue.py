@@ -39,7 +39,7 @@ WELCOME_HTML = (
     'sorted by trade, with a note on each and the state record linked. Monday\'s issue covers the whole week, so it '
     'will repeat some of these; after that, each Monday is new.</p>'
     '<p style="margin:0;font-family:Arial,sans-serif;font-size:13px;line-height:1.4;color:#4A5A52;">'
-    f'One city is free. <a href="{PLANS_URL}" style="color:#17754C;font-weight:bold;">Statewide covers all ten cities we track, $49 a month</a></p>'
+    f'One city is free. <a href="{PLANS_URL}" style="color:#17754C;font-weight:bold;">Statewide covers all ten Colorado cities, $49 a month</a></p>'
     '</td></tr></table></td></tr>'
 )
 

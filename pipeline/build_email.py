@@ -129,7 +129,7 @@ def city_email(city: str, crows: list, filed: int, cache: dict, sample_n: int | 
             f'<td><p style="margin:0;font-family:{SERIF};font-size:28px;font-weight:bold;color:{ACCENT};">{kept}</p>{kicker("Worth reading")}</td>'
             f'</tr></table></td></tr></table>', "22px 0 0"))
         if kept < THIN_WEEK:
-            parts.append(row(f'<p style="margin:0;background:#F7EEEC;padding:12px 16px;font-family:{SERIF};font-size:15px;color:{INK2};">A thin week in {esc(city)}. The state recorded {filed} new entities here; after removing holding companies, registered-agent addresses, and names that reveal nothing, {kept} were worth a broker\'s time. We would rather show a short list than pad it.</p>', "18px 0 0"))
+            parts.append(row(f'<p style="margin:0;background:#F7EEEC;padding:12px 16px;font-family:{SERIF};font-size:15px;color:{INK2};">A thin week in {esc(city)}. The state recorded {filed} new entities here; after removing holding companies, registered-agent addresses, and names that reveal nothing, {kept} were worth a broker\'s time. A short list beats a padded one.</p>', "18px 0 0"))
         # Industries
         for ind in INDUSTRIES:
             entries = groups.get(ind)
