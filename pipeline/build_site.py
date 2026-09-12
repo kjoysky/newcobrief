@@ -109,6 +109,7 @@ section.industry .kicker.also{color:var(--ink-3);border:0;margin:22px 0 4px;padd
 .prose{max-width:34em;font-size:18px;line-height:1.6}
 .prose h1{font-size:36px;margin:40px 0 8px}.prose h2{font-family:var(--serif);font-weight:600;letter-spacing:-.02em;font-size:24px;margin:36px 0 8px}
 .prose p{margin:12px 0 0}
+.who{margin:18px 0 0}.who img{display:block;width:180px;height:180px;object-fit:cover}.who figcaption{font-family:var(--sans);font-stretch:87.5%;font-weight:550;font-size:12.5px;letter-spacing:.02em;color:var(--ink-3);margin-top:8px}
 .plans .plan{border-top:1px solid var(--rule);padding:22px 0 26px;margin-top:28px}.plans .plan .kicker{margin:0 0 4px}
 .plans .price{font-family:var(--serif);font-weight:600;font-size:32px;letter-spacing:-.02em;margin:0}.plans .price span{font-family:var(--sans);font-stretch:87.5%;font-weight:550;font-size:14px;letter-spacing:0;color:var(--ink-2)}
 .plans a.cta{font-family:var(--sans);font-stretch:87.5%;font-weight:600}
@@ -328,6 +329,7 @@ def about_page(root: str) -> str:
 <h1>About NewCo Brief</h1>
 <p>NewCo Brief is a weekly brief of newly formed Colorado businesses, written for the people who sell to them. Every night it reads the Colorado Secretary of State's public list of new entities, removes holding companies, mailbox registrations, and names that say nothing, infers the trade from the name, and writes one line for a commercial insurance broker on each. The email goes out Monday morning. One city is free. {PRICE_HTML.format(root=root)}</p>
 <h2>Who makes it</h2>
+<figure class="who"><img src="{root}img/kristina-nelson.jpg" width="640" height="640" alt="{esc(AUTHOR)}"><figcaption>{esc(AUTHOR)}, Duluth, Minnesota</figcaption></figure>
 <p>NewCo Brief is written and run by {esc(AUTHOR)}. The filtering rules, the industry list, and the decisions about what to cut and what to publish are hers. Names are sorted against the industry list with the help of an AI model, and every inferred label is marked as inferred so you can judge it yourself. The state record is linked on every entry.</p>
 <h2>What we publish, and what we don't</h2>
 <p>Business name, city and ZIP, entity type, formation date, and the state's record number. Never street addresses, owner names, registered-agent names, phone numbers, or email addresses, even though some of those are in the public record. Entries stay on the site for 90 days. There is no export.</p>
