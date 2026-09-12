@@ -35,11 +35,11 @@ WELCOME_HTML = (
     '<p style="margin:0 0 8px;font-family:Georgia,serif;font-size:17px;line-height:1.45;color:#16241D;">'
     '<b>Welcome to NewCo Brief.</b> Here is this week\'s {city} list, so you don\'t wait for Monday.</p>'
     '<p style="margin:0 0 8px;font-family:Georgia,serif;font-size:15px;line-height:1.45;color:#4A5A52;">'
-    'Every Monday from now on: the newly formed businesses in {city} worth a call, cut from the state\'s raw filings, '
+    'Every Monday from now on: the newly formed businesses in {city} worth reading, cut from the state\'s raw filings, '
     'sorted by trade, with a note on each and the state record linked. Monday\'s issue covers the whole week, so it '
     'will repeat some of these; after that, each Monday is new.</p>'
     '<p style="margin:0;font-family:Arial,sans-serif;font-size:13px;line-height:1.4;color:#4A5A52;">'
-    f'Every city, not just one: <a href="{PLANS_URL}" style="color:#17754C;font-weight:bold;">Get the whole state, $49 a month</a></p>'
+    f'One city is free. <a href="{PLANS_URL}" style="color:#17754C;font-weight:bold;">Statewide covers all ten cities we track, $49 a month</a></p>'
     '</td></tr></table></td></tr>'
 )
 

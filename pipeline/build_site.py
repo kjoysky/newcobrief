@@ -346,7 +346,7 @@ def plans_page(root: str) -> str:
 <p>One city of your choice, every Monday. Pick it at signup; change it any time from the link at the bottom of any issue.</p>
 <p><a href="{root}#top">Get one city free &rarr;</a></p></div>
 <div class="plan"><p class="kicker">Statewide</p><p class="price">$49 <span>a month, or $490 a year</span></p>
-<p>Every city you choose, as many as you like, from the {n} we cover. Add or drop cities yourself from the same link. Billed by Stripe; cancel any time.</p>
+<p>Every city you choose, as many as you like, from the {n} we cover. Add or drop cities yourself from the same link. Billed by Stripe; cancel any time. One new account can pay for months of NewCo Brief.</p>
 <p><a class="cta" href="{BUY_URL}">Subscribe to Statewide &rarr;</a></p></div>
 <div class="plan"><p class="kicker">Firm</p><p class="price">$199 <span>a month for up to five people</span></p>
 <p>Statewide for the whole office: five addresses at one agency, each choosing their own cities. $1,990 a year at checkout. Larger offices, ask. Search across past issues is coming and will be added to Firm plans first.</p>
