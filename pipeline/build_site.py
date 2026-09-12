@@ -23,7 +23,7 @@ HOME_DESCRIPTION = ("A weekly brief of newly formed Colorado businesses: the sta
                     "operating companies, tagged by trade, with one line for a commercial insurance broker on each. "
                     "One city is free.")
 AUTHOR = "Kristina Nelson"
-CONTACT_EMAIL = "brief@newcobrief.com"     # forwards to kjoysky31@gmail.com via ImprovMX (MX + SPF at GoDaddy, 2026-09-10)
+CONTACT_EMAIL = "brief@newcobrief.com"     # alias on the kristina@newcobrief.com Workspace mailbox (2026-09-12)
 BUY_URL = "https://buttondown.com/newcobrief/buy"   # Buttondown's hosted Stripe checkout for the Statewide plan
 FIRM_BUY_URL = BUY_URL + "?product_id=prod_VF6nXdrVgo1vFw"   # same, for the Firm product (Stripe product id; verified 2026-09-11)
 PRICE_LINE = "Statewide is $49 a month and covers all ten cities we track. Firm plans cover the whole office."
