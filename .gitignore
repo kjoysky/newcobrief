@@ -12,3 +12,5 @@ data/sample/
 02-Design-Brief.md
 # Built emails and send log
 data/email/
+# Prospect lists with names and emails; never published
+outreach/
