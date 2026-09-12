@@ -26,8 +26,8 @@ AUTHOR = "Kristina Nelson"
 CONTACT_EMAIL = "brief@newcobrief.com"     # forwards to kjoysky31@gmail.com via ImprovMX (MX + SPF at GoDaddy, 2026-09-10)
 BUY_URL = "https://buttondown.com/newcobrief/buy"   # Buttondown's hosted Stripe checkout for the Statewide plan
 FIRM_BUY_URL = BUY_URL + "?product_id=prod_VF6nXdrVgo1vFw"   # same, for the Firm product (Stripe product id; verified 2026-09-11)
-PRICE_LINE = "Statewide is $49 a month for every city you choose. Firm plans cover the whole office."
-PRICE_HTML = (f'Statewide is <a href="{BUY_URL}">$49 a month</a> for every city you choose. '
+PRICE_LINE = "Statewide is $49 a month and covers all ten cities we track. Firm plans cover the whole office."
+PRICE_HTML = (f'Statewide is <a href="{BUY_URL}">$49 a month</a> and covers all ten cities we track. '
               f'<a href="{{root}}plans/">Firm plans</a> cover the whole office.')
 THIN_WEEK = 20
 # Public city pages show ONE trade in full (the lead trade, up to this many entries) and every other trade
@@ -317,7 +317,7 @@ def landing(sample: tuple, totals: dict, statewide: int, root: str) -> str:
 <p>Commercial insurance brokers. The entry above is the kind of account that has not chosen a broker yet, and it arrives here days after filing, before the company has a website or a listing.</p>
 <p>Not yet for bankers, accountants, or payroll providers. Every line of commentary is written for insurance; editions for those desks come later. Not for consumer marketing: we publish city and ZIP only, never owner names, phones, or street addresses.</p>
 <h2>This week's city pages</h2>
-<p>Free, public, and refreshed nightly. Each shows this week's figures and the lead trade in full. The Monday email carries every entry.</p>
+<p>Free, public, and refreshed nightly. Each shows this week's figures and the lead trade in full. The Monday email carries every entry. Some weeks are thin; we would rather show a short list than pad it.</p>
 <ul class="cities-list">{cities}</ul>
 </main>"""
     return page(HOME_TITLE, body, root, desc=HOME_DESCRIPTION)
@@ -341,12 +341,13 @@ def plans_page(root: str) -> str:
     n = len(LAUNCH_CITIES)
     body = f"""<main class="prose plans">
 <h1>Plans</h1>
+<p><b>Start with your home market, free. Upgrade when you want to prospect beyond it.</b></p>
 <p>Every plan is the same Monday email: newly formed Colorado businesses, filtered to real operating companies, tagged by trade, one line for a broker on each, every entry in full. Plans differ only in how many cities and how many people.</p>
 <div class="plan"><p class="kicker">Free</p><p class="price">$0</p>
 <p>One city of your choice, every Monday. Pick it at signup; change it any time from the link at the bottom of any issue.</p>
 <p><a href="{root}#top">Get one city free &rarr;</a></p></div>
 <div class="plan"><p class="kicker">Statewide</p><p class="price">$49 <span>a month, or $490 a year</span></p>
-<p>Every city you choose, as many as you like, from the {n} we cover. Add or drop cities yourself from the same link. Billed by Stripe; cancel any time. One new account can pay for months of NewCo Brief.</p>
+<p>For brokers who write business in more than one Colorado market. Every city you choose, as many as you like, from the {n} we cover. Add or drop cities yourself from the same link. Billed by Stripe; cancel any time. One new account can pay for months of NewCo Brief.</p>
 <p><a class="cta" href="{BUY_URL}">Subscribe to Statewide &rarr;</a></p></div>
 <div class="plan"><p class="kicker">Firm</p><p class="price">$199 <span>a month for up to five people</span></p>
 <p>Statewide for the whole office: five addresses at one agency, each choosing their own cities. $1,990 a year at checkout. Larger offices, ask. Search across past issues is coming and will be added to Firm plans first.</p>
@@ -358,7 +359,7 @@ def plans_page(root: str) -> str:
 <p><b>How do I cancel?</b> From the link at the bottom of any issue. The plan runs to the end of the period you paid for.</p>
 <p>Anything else: <a href="mailto:{CONTACT_EMAIL}">{CONTACT_EMAIL}</a>.</p>
 </main>"""
-    return page(f"Plans — {SITE_NAME}", body, root, desc=f"One city free. Statewide $49 a month for every city you choose. Firm plans for the whole office.")
+    return page(f"Plans — {SITE_NAME}", body, root, desc=f"One city free. Statewide $49 a month for all ten cities we track. Firm plans for the whole office.")
 
 
 def check_email_page(root: str) -> str:
@@ -380,7 +381,7 @@ def welcome_page(root: str) -> str:
 <p><b>This week's entries are on the site right now.</b> Pick your city: {cities}.</p>
 <p>The site shows the lead trade in full and counts the rest. <b>Your first issue arrives overnight</b> with every entry for your city, in full, with the one-line note on each. Then it comes every Monday morning from <b>brief@newcobrief.com</b>. Monday's issue covers the whole week, so it will repeat some of what you get tonight; after that, each Monday is new.</p>
 <p>Want to see exactly what lands in your inbox? <a href="{root}sample/">Here is a sample issue.</a></p>
-<p>Every city, not just one? <a href="{root}plans/">Statewide is $49 a month</a>, and you can add it any time from the link at the bottom of an issue. No rush.</p>
+<p>All ten cities, not just one? <a href="{root}plans/">Statewide is $49 a month</a>, and you can add it any time from the link at the bottom of an issue. No rush.</p>
 <p>Reply to any issue and it reaches {esc(AUTHOR)} directly.</p>
 </main>"""
     return page(f"You're in — {SITE_NAME}", body, root, desc="Welcome to NewCo Brief. Your first issue arrives overnight; this week's entries are on the site now.")

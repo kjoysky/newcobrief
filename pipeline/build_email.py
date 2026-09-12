@@ -200,7 +200,8 @@ def sample_page(subject: str, body: str, kept: int, root: str) -> str:
              f'<a href="{root}#top">One city is free.</a></p>'
              f'<p class="kicker" style="margin-top:28px">Subject line</p><p style="margin:4px 0 0;font-size:17px">{esc(subject)}</p>'
              f'<div class="sample-email">{email}</div>'
-             f'<p style="margin-top:28px"><a href="{root}#top">Get {esc(SAMPLE_CITY)} or any other city by email, free &rarr;</a></p></main>')
+             f'<p style="margin-top:28px"><a href="{root}#top">Get {esc(SAMPLE_CITY)} or any other city by email, free &rarr;</a></p>'
+             f'<p style="margin-top:8px"><a href="{root}plans/">Get all ten cities, $49 a month &rarr;</a></p></main>')
     return page(f"Sample issue — {SITE_NAME}", intro, root, desc=f"What the Monday email looks like: the {SAMPLE_CITY} edition, first {SAMPLE_FULL} entries.")
 
 
