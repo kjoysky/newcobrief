@@ -109,7 +109,8 @@ section.industry .kicker.also{color:var(--ink-3);border:0;margin:22px 0 4px;padd
 .prose{max-width:34em;font-size:18px;line-height:1.6}
 .prose h1{font-size:36px;margin:40px 0 8px}.prose h2{font-family:var(--serif);font-weight:600;letter-spacing:-.02em;font-size:24px;margin:36px 0 8px}
 .prose p{margin:12px 0 0}
-.who{margin:18px 0 0}.who img{display:block;width:180px;height:180px;object-fit:cover}.who figcaption{font-family:var(--sans);font-stretch:87.5%;font-weight:550;font-size:12.5px;letter-spacing:.02em;color:var(--ink-3);margin-top:8px}
+.who{float:right;width:112px;margin:6px 0 10px 28px}.who img{display:block;width:112px;height:112px;object-fit:cover}.who figcaption{font-family:var(--sans);font-stretch:87.5%;font-weight:550;font-size:12px;line-height:1.35;letter-spacing:.02em;color:var(--ink-3);margin-top:6px}
+.prose h2{clear:both}
 .plans .plan{border-top:1px solid var(--rule);padding:22px 0 26px;margin-top:28px}.plans .plan .kicker{margin:0 0 4px}
 .plans .price{font-family:var(--serif);font-weight:600;font-size:32px;letter-spacing:-.02em;margin:0}.plans .price span{font-family:var(--sans);font-stretch:87.5%;font-weight:550;font-size:14px;letter-spacing:0;color:var(--ink-2)}
 .plans a.cta{font-family:var(--sans);font-stretch:87.5%;font-weight:600}
@@ -139,7 +140,7 @@ footer p{margin:0 0 8px}
 .signup button{margin-top:16px;font-family:var(--sans);font-stretch:87.5%;font-weight:600;font-size:15px;letter-spacing:.02em;padding:12px 20px;background:var(--accent);color:#fff;border:0;cursor:pointer;border-radius:0}
 .signup button:hover{background:var(--accent-deep)}
 .signup .fine{font-family:var(--sans);font-stretch:87.5%;font-size:12.5px;color:var(--ink-3);margin:10px 0 0}
-@media (max-width:600px){body{font-size:16px}h1{font-size:34px}.hero h1{font-size:32px}.figures{gap:22px}.figures b{font-size:28px}.entry h2{font-size:21px}.entry p.note{font-size:17px}.signup .row{flex-direction:column}}
+@media (max-width:600px){body{font-size:16px}.who{width:88px;margin:4px 0 6px 18px}.who img{width:88px;height:88px}h1{font-size:34px}.hero h1{font-size:32px}.figures{gap:22px}.figures b{font-size:28px}.entry h2{font-size:21px}.entry p.note{font-size:17px}.signup .row{flex-direction:column}}
 """
 
 
@@ -329,7 +330,7 @@ def about_page(root: str) -> str:
 <h1>About NewCo Brief</h1>
 <p>NewCo Brief is a weekly brief of newly formed Colorado businesses, written for the people who sell to them. Every night it reads the Colorado Secretary of State's public list of new entities, removes holding companies, mailbox registrations, and names that say nothing, infers the trade from the name, and writes one line for a commercial insurance broker on each. The email goes out Monday morning. One city is free. {PRICE_HTML.format(root=root)}</p>
 <h2>Who makes it</h2>
-<figure class="who"><img src="{root}img/kristina-nelson.jpg" width="640" height="640" alt="{esc(AUTHOR)}"><figcaption>{esc(AUTHOR)} · Founder, NewCo Brief</figcaption></figure>
+<figure class="who"><img src="{root}img/kristina-nelson.jpg" width="640" height="640" alt="{esc(AUTHOR)}"><figcaption>{esc(AUTHOR)}<br>Founder</figcaption></figure>
 <p>NewCo Brief is written and run by {esc(AUTHOR)}. The filtering rules, the industry categories, and the decisions about what to cut and what to publish are hers.</p>
 <p>Industry classifications and commentary are inferred from the business name. Treat them as a starting point for research, not as verified facts about the business. Every inferred classification is marked as inferred, and the original Colorado Secretary of State record is linked on every entry so you can check it yourself.</p>
 <h2>What we publish, and what we don't</h2>
